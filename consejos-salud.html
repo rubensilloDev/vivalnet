@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consejos de Salud Animal | Vivalnet Clínica Veterinaria</title>
+    <meta name="description"
+        content="Guías y consejos expertos de los veterinarios de Vivalnet sobre nutrición, vacunas, higiene y bienestar para perros y gatos. Cuida mejor a tu mascota.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Estilos compartidos del sitio -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Todos los estilos están en style.css -->
+</head>
+
+<body>
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor"><i class="ph-fill ph-paw-print"></i></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <div class="magnetic-wrap" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <a href="#" class="btn-whatsapp-floating" aria-label="Contactar por WhatsApp" style="position: static;">
+            <i class="ph-fill ph-whatsapp-logo"></i>
+        </a>
+    </div>
+
+    <!-- ==============================
+         BARRA DE NAVEGACIÓN
+         ============================== -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <img src="img/VitalVet_veterinario_202603211912-Photoroom.png" alt="Vivalnet Clínica Veterinaria Logo">
+                <span>Vivalnet</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="nuestro-equipo.html">Nuestro Equipo</a>
+                <a href="consejos-salud.html" style="color: var(--color-primary);">Consejos de Salud</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
+                    <i class="ph-fill ph-moon"></i>
+                </button>
+                <div class="magnetic-wrap">
+                    <a href="index.html" class="btn btn-outline"><i class="ph ph-house"></i> Inicio</a>
+                </div>
+                <div class="magnetic-wrap">
+                    <a href="index.html#reserva" class="btn btn-primary">Reservar Cita</a>
+                </div>
+            </div>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==============================
+         HERO DE LA PÁGINA
+         ============================== -->
+    <section class="page-hero consejos-hero">
+        <div class="container page-hero-content" data-animate="fade-up">
+            <div class="badge"><i class="ph-fill ph-book-open"></i> &nbsp;Guías y consejos de veterinarios expertos</div>
+            <h1>Salud, consejos y cuidados <br>para tu mascota</h1>
+            <p>Todo lo que necesitas saber para mantener a tu perro o gato sano, feliz y lleno de energía.</p>
+            <!-- Buscador decorativo -->
+            <div class="hero-search">
+                <i class="ph ph-magnifying-glass" style="color: rgba(255,255,255,0.7); font-size: 1.25rem;"></i>
+                <input type="text" placeholder="Busca un consejo, ej: alimentación, vacunas...">
+                <button type="button"><i class="ph ph-magnifying-glass"></i> Buscar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         FILTROS POR CATEGORÍA
+         ============================== -->
+    <div class="filters-section">
+        <div class="container">
+            <div class="filters-row">
+                <span class="filter-label">Filtrar por:</span>
+                <button class="filter-chip active"><i class="ph ph-grid-four"></i> Todos</button>
+                <button class="filter-chip"><i class="ph-fill ph-dog"></i> Perros</button>
+                <button class="filter-chip"><i class="ph-fill ph-cat"></i> Gatos</button>
+                <button class="filter-chip"><i class="ph ph-fork-knife"></i> Nutrición</button>
+                <button class="filter-chip"><i class="ph ph-syringe"></i> Vacunas</button>
+                <button class="filter-chip"><i class="ph ph-scissors"></i> Higiene</button>
+                <button class="filter-chip"><i class="ph ph-first-aid"></i> Urgencias</button>
+                <button class="filter-chip"><i class="ph ph-moon-stars"></i> Bienestar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==============================
+         CONTENIDO PRINCIPAL + SIDEBAR
+         ============================== -->
+    <div class="container content-layout">
+
+        <!-- === COLUMNA DE ARTÍCULOS (izquierda) === -->
+        <main>
+
+            <!-- --- Artículo DESTACADO --- -->
+            <article class="article-featured" data-animate="fade-up">
+                <div class="article-featured-img">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=1200" alt="Perro comiendo una dieta equilibrada y saludable">
+                    <span class="article-cat-tag"><i class="ph ph-fork-knife"></i> Nutrición</span>
+                </div>
+                <div class="article-featured-body">
+                    <div class="article-meta">
+                        <span><i class="ph ph-user-circle"></i> Dra. Cristina Ruiz</span>
+                        <span><i class="ph ph-calendar-blank"></i> 18 marzo 2026</span>
+                        <span><i class="ph ph-clock"></i> 7 min de lectura</span>
+                    </div>
+                    <h2>La guía definitiva para alimentar bien a tu perro: todo lo que debes saber</h2>
+                    <p>La alimentación es uno de los pilares más importantes de la salud de tu mascota. Sin embargo, existen muchos mitos sobre qué alimentos son buenos y cuáles son perjudiciales. En este artículo te explicamos cómo elegir el pienso adecuado según la edad, el tamaño y el estado de salud de tu perro, y cuáles son los errores más comunes que cometen los dueños sin saberlo.</p>
+                    <a href="#" class="read-more-link">
+                        Leer artículo completo <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- --- Cuadrícula de artículos SECUNDARIOS --- -->
+            <div class="articles-grid">
+
+                <!-- Artículo 1: Vacunas -->
+                <article class="article-card" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=600" alt="Veterinaria vacunando a un cachorro">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-syringe"></i> Vacunas</span>
+                        <h3>Calendario de vacunación para cachorros: ¿cuándo y cuáles?</h3>
+                        <p>Los primeros meses de vida son cruciales para la inmunidad de tu cachorro. Te explicamos el calendario oficial y qué pasa si te saltas alguna dosis.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 5 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 2: Higiene dental -->
+                <article class="article-card" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?auto=format&fit=crop&q=80&w=600" alt="Gato con buena salud dental">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-scissors"></i> Higiene</span>
+                        <h3>Higiene dental en gatos: el problema que la mayoría ignora</h3>
+                        <p>El 70% de los gatos mayores de 3 años tiene algún problema dental. Descubre cómo prevenir el sarro y el mal aliento desde casa.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 4 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 3: Calor -->
+                <article class="article-card" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?auto=format&fit=crop&q=80&w=600" alt="Perro acalorado en verano bebiendo agua">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-sun"></i> Urgencias</span>
+                        <h3>Golpe de calor en perros: señales de alerta y primeros auxilios</h3>
+                        <p>El golpe de calor puede ser mortal en minutos. Aprende a reconocer los síntomas y cómo actuar antes de llegar a la clínica.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 3 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 4: Estrés en gatos -->
+                <article class="article-card" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600" alt="Gato relajado en casa">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-moon-stars"></i> Bienestar</span>
+                        <h3>¿Tu gato está estresado? 8 señales que no debes ignorar</h3>
+                        <p>Los gatos ocultan el estrés mejor que los perros, pero hay señales claras. Descubre qué los pone nerviosos y cómo crear un entorno más tranquilo.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 6 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 5: Desparasitación -->
+                <article class="article-card" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=600" alt="Perro siendo examinado por parásitos">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-syringe"></i> Prevención</span>
+                        <h3>Desparasitación interna y externa: cuándo y cómo hacerla</h3>
+                        <p>Las pulgas, los garrapatas y los parásitos intestinales afectan a millones de mascotas. Conoce la frecuencia de tratamiento ideal según el estilo de vida.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 4 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 6: Envejecimiento mascotas -->
+                <article class="article-card" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=600" alt="Perro mayor con su dueño">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-heart"></i> Geriátrico</span>
+                        <h3>Cómo cuidar a tu mascota cuando llega a la vejez</h3>
+                        <p>Las mascotas mayores tienen necesidades especiales. Desde la nutrición hasta los chequeos preventivos, te contamos cómo ofrecerle la mejor calidad de vida.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 8 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div><!-- fin .articles-grid -->
+
+        </main><!-- fin columna de artículos -->
+
+
+        <!-- === SIDEBAR (columna lateral derecha) === -->
+        <aside class="sidebar">
+
+            <!-- Consejo rápido del día -->
+            <div class="quick-tip" data-animate="fade-left">
+                <div class="quick-tip-header">
+                    <i class="ph-fill ph-lightbulb quick-tip-icon"></i>
+                    <h3>Consejo del día</h3>
+                </div>
+                <p><strong>¿Sabías que</strong> los gatos necesitan principalmente proteína animal? A diferencia de los perros, son carnívoros estrictos. Un alimento con cereales como ingrediente principal no cubre sus necesidades nutricionales básicas.</p>
+            </div>
+
+            <!-- Artículos más populares -->
+            <div class="sidebar-widget" data-animate="fade-left">
+                <h3><i class="ph-fill ph-fire" style="color: var(--color-secondary);"></i> Más leídos</h3>
+                <div class="popular-list">
+                    <div class="popular-item">
+                        <div class="popular-thumb">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=150" alt="Artículo nutrición">
+                        </div>
+                        <div>
+                            <h4>Guía de alimentación para perros adultos</h4>
+                            <span><i class="ph ph-clock"></i> 7 min · Nutrición</span>
+                        </div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-thumb">
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=150" alt="Artículo gatos estrés">
+                        </div>
+                        <div>
+                            <h4>Señales de estrés en gatos que no debes ignorar</h4>
+                            <span><i class="ph ph-clock"></i> 6 min · Bienestar</span>
+                        </div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-thumb">
+                            <img src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?auto=format&fit=crop&q=80&w=150" alt="Artículo golpe de calor">
+                        </div>
+                        <div>
+                            <h4>Golpe de calor: primeros auxilios para tu perro</h4>
+                            <span><i class="ph ph-clock"></i> 3 min · Urgencias</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="newsletter-widget" data-animate="fade-left">
+                <i class="ph ph-envelope-simple"></i>
+                <h3>Recibe consejos en tu email</h3>
+                <p>Un consejo veterinario al mes, directo a tu bandeja de entrada. Sin spam.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="tu@email.com" aria-label="Tu email">
+                    <button type="button">
+                        <i class="ph ph-paper-plane-tilt"></i> Suscribirme gratis
+                    </button>
+                </div>
+            </div>
+
+            <!-- CTA para reservar cita -->
+            <div class="sidebar-widget text-center" data-animate="fade-left" style="background: var(--color-primary-light); border-color: var(--color-primary);">
+                <i class="ph-fill ph-calendar-check" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1rem; display: block;"></i>
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">¿Tienes dudas sobre tu mascota?</h3>
+                <p style="color: var(--color-text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;">Reserva una consulta con nuestros expertos.</p>
+                <a href="index.html#reserva" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    Reservar Cita
+                </a>
+            </div>
+
+        </aside><!-- fin sidebar -->
+
+    </div><!-- fin .content-layout -->
+
+
+    <!-- ==============================
+         SECCIÓN: GUÍAS DESCARGABLES
+         ============================== -->
+    <section class="guides-section section-padding">
+        <div class="container">
+            <div class="section-header text-center" data-animate="fade-up">
+                <h2>Guías gratuitas para dueños</h2>
+                <p>Documentos elaborados por nuestros veterinarios para que puedas consultarlos cuando los necesites.</p>
+            </div>
+
+            <div class="guides-grid">
+                <!-- Guía 1: Cachorros -->
+                <div class="guide-card green" data-animate="fade-up">
+                    <i class="ph-fill ph-dog guide-card-icon"></i>
+                    <div class="guide-icon-badge"><i class="ph-fill ph-dog"></i></div>
+                    <h3>Guía del cachorro: los primeros 6 meses</h3>
+                    <p>Vacunas, socialización, alimentación y los errores más comunes de los nuevos dueños. 24 páginas.</p>
+                    <a href="#" class="guide-download-btn">
+                        <i class="ph ph-download-simple"></i> Descargar gratis (PDF)
+                    </a>
+                </div>
+
+                <!-- Guía 2: Alimentación -->
+                <div class="guide-card amber" data-animate="fade-up">
+                    <i class="ph-fill ph-fork-knife guide-card-icon"></i>
+                    <div class="guide-icon-badge"><i class="ph ph-fork-knife"></i></div>
+                    <h3>Alimentos prohibidos para perros y gatos</h3>
+                    <p>Lista completa de alimentos tóxicos para tu mascota y qué hacer si los ingiere accidentalmente. 10 páginas.</p>
+                    <a href="#" class="guide-download-btn">
+                        <i class="ph ph-download-simple"></i> Descargar gratis (PDF)
+                    </a>
+                </div>
+
+                <!-- Guía 3: Urgencias -->
+                <div class="guide-card blue" data-animate="fade-up">
+                    <i class="ph-fill ph-first-aid guide-card-icon"></i>
+                    <div class="guide-icon-badge"><i class="ph ph-first-aid"></i></div>
+                    <h3>Primeros auxilios en casa para mascotas</h3>
+                    <p>Qué hacer y qué no hacer ante las urgencias veterinarias más comunes hasta llegar a la clínica. 18 páginas.</p>
+                    <a href="#" class="guide-download-btn">
+                        <i class="ph ph-download-simple"></i> Descargar gratis (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         BANNER DE URGENCIAS
+         ============================== -->
+    <section class="emergency-cta section-padding">
+        <div class="container">
+            <div class="emergency-banner" data-animate="fade-up">
+                <div class="emergency-left">
+                    <div class="emergency-icon-wrap">
+                        <i class="ph-fill ph-warning"></i>
+                    </div>
+                    <div class="emergency-text">
+                        <h3>¿Tienes una urgencia ahora mismo?</h3>
+                        <p>No esperes. Nuestro equipo de urgencias está disponible las 24 horas del día.</p>
+                    </div>
+                </div>
+                <div class="emergency-actions">
+                    <a href="tel:+34900123456" class="btn btn-emergency btn-large">
+                        <i class="ph ph-phone"></i> Llamar ahora: 900 123 456
+                    </a>
+                    <a href="#" class="btn btn-whatsapp-text btn-large">
+                        <i class="ph-fill ph-whatsapp-logo"></i> WhatsApp Urgencias
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         PIE DE PÁGINA
+         ============================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="img/VitalVet_veterinario_202603211912-Photoroom.png" alt="Vivalnet Clínica Veterinaria Logo">
+                    <span>Vivalnet</span>
+                </a>
+                <p>Clínica veterinaria especializada en el cuidado avanzado y preventivo de perros y gatos.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="ph ph-map-pin"></i> Calle Vivaldi 45, Local 2, Ciudad</li>
+                    <li><i class="ph ph-phone"></i> +34 900 123 456</li>
+                    <li><i class="ph ph-envelope-simple"></i> urgencias@vivalnet.es</li>
+                    <li><i class="ph ph-whatsapp-logo"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+            <div class="footer-links footer-schedule">
+                <h3>Horario de Atención</h3>
+                <ul>
+                    <li><strong>Lunes - Viernes:</strong> 09:00 - 20:30</li>
+                    <li><strong>Sábados:</strong> 10:00 - 14:00</li>
+                    <li><strong class="text-accent">Urgencias:</strong> 24/7 (con llamada previa)</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nuestro-equipo.html">Nuestro Equipo</a></li>
+                    <li><a href="consejos-salud.html">Consejos de Salud</a></li>
+                    <li><a href="index.html#reserva">Reservar Cita</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Vivalnet Veterinaria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

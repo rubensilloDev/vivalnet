@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivalnet | Clínica Veterinaria Premium para Perros y Gatos</title>
+    <meta name="description"
+        content="Clínica veterinaria Vivalnet. Atención experta, urgencias y medicina preventiva para tu mascota con el trato cercano que se merece. Reserva tu cita hoy.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons para iconografía elegante -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor">
+        <i class="ph-fill ph-paw-print"></i>
+    </div>
+    <div class="cursor-follower"></div>
+
+
+    <!-- Floating WhatsApp Button -->
+    <div class="magnetic-wrap" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <a href="#" class="btn-whatsapp-floating" aria-label="Contactar por WhatsApp" style="position: static;">
+            <i class="ph-fill ph-whatsapp-logo"></i>
+        </a>
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">
+                <img src="img/VitalVet_veterinario_202603211912-Photoroom.png" alt="Vivalnet Clínica Veterinaria Logo">
+                <span>Vivalnet</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" style="color: var(--color-primary);">Inicio</a>
+                <a href="nuestro-equipo.html">Nuestro Equipo</a>
+                <a href="consejos-salud.html">Consejos de Salud</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
+                    <i class="ph-fill ph-moon"></i>
+                </button>
+                <div class="magnetic-wrap">
+                    <a href="#" class="btn btn-outline"><i class="ph ph-phone"></i> Llamar</a>
+                </div>
+                <div class="magnetic-wrap">
+                    <a href="#reserva" class="btn btn-primary">Reservar Cita</a>
+                </div>
+            </div>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content" data-animate="fade-up">
+                <div class="badge">Atención veterinaria de élite</div>
+                <h1>Tranquilidad para ti.<br><span class="text-gradient">Salud de primera</span> para ellos.</h1>
+                <p>Cuidamos de tu perro o gato con medicina avanzada, instalaciones modernas y el cariño que se merecen.
+                    Nunca fue tan fácil y seguro ir al veterinario.</p>
+                <div class="hero-buttons">
+                    <div class="magnetic-wrap">
+                        <a href="#reserva" class="btn btn-primary btn-large">
+                            Reservar cita ahora
+                            <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#" class="btn btn-secondary btn-large">
+                            <i class="ph-fill ph-whatsapp-logo"></i>
+                            Hablar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="trust-signals">
+                    <div class="signal">
+                        <i class="ph-fill ph-check-circle"></i>
+                        <span>Urgencias</span>
+                    </div>
+                    <div class="signal">
+                        <i class="ph-fill ph-star"></i>
+                        <span>Veterinarios expertos</span>
+                    </div>
+                    <div class="signal">
+                        <i class="ph-fill ph-heart"></i>
+                        <span>Trato humano y cálido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-wrapper" data-animate="fade-left">
+                <div class="image-glass-card user-card" id="tilt-card">
+                    <div class="user-avatar">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
+                            alt="Cliente feliz">
+                    </div>
+                    <div class="user-text">
+                        <strong>Laura M.</strong>
+                        <span>"Salvaron a mi gato, son increíbles."</span>
+                    </div>
+                </div>
+                <img src="./img/img-hero.jpeg" alt="Veterinaria cuidando a un perro feliz" class="hero-main-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Ticker Band -->
+    <div class="ticker-band">
+        <div class="ticker-content">
+            <span class="ticker-item"><i class="ph-fill ph-hospital"></i> Urgencias 24/7</span>
+            <span class="ticker-item"><i class="ph-fill ph-dog"></i> Especialistas Caninos</span>
+            <span class="ticker-item"><i class="ph-fill ph-cat"></i> Medicina Felina</span>
+            <span class="ticker-item"><i class="ph-fill ph-microscope"></i> Tecnología de Vanguardia</span>
+            <span class="ticker-item"><i class="ph-fill ph-heart"></i> Trato Fear Free</span>
+            <span class="ticker-item"><i class="ph-fill ph-certificate"></i> +10 Años de Experiencia</span>
+            <!-- Repeat for seamless loop -->
+            <span class="ticker-item"><i class="ph-fill ph-hospital"></i> Urgencias 24/7</span>
+            <span class="ticker-item"><i class="ph-fill ph-dog"></i> Especialistas Caninos</span>
+            <span class="ticker-item"><i class="ph-fill ph-cat"></i> Medicina Felina</span>
+            <span class="ticker-item"><i class="ph-fill ph-microscope"></i> Tecnología de Vanguardia</span>
+        </div>
+    </div>
+
+    <!-- Trust Block -->
+    <section class="trust-block">
+        <div class="container trust-grid">
+            <div class="trust-card" data-animate="fade-up" data-delay="0">
+                <div class="icon-wrapper"><i class="ph ph-clock"></i></div>
+                <h3>Atención Rápida</h3>
+                <p>Sin esperas interminables. Valoramos tu tiempo y la salud de tu mascota.</p>
+            </div>
+            <div class="trust-card" data-animate="fade-up" data-delay="100">
+                <div class="icon-wrapper"><i class="ph ph-stethoscope"></i></div>
+                <h3>Cuidado Experto</h3>
+                <p>Equipo médico altamente cualificado en continua formación y desarrollo.</p>
+            </div>
+            <div class="trust-card" data-animate="fade-up" data-delay="200">
+                <div class="icon-wrapper"><i class="ph ph-buildings"></i></div>
+                <h3>Instalaciones Modernas</h3>
+                <p>Tecnología de vanguardia para diagnósticos precisos y tratamientos seguros.</p>
+            </div>
+            <div class="trust-card" data-animate="fade-up" data-delay="300">
+                <div class="icon-wrapper"><i class="ph ph-hands-clapping"></i></div>
+                <h3>Reserva Fácil</h3>
+                <p>Gestiona tus citas al instante desde tu móvil. Rápido y sin complicaciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="servicios">
+        <div class="container">
+            <div class="section-header text-center" data-animate="fade-up">
+                <h2>Servicios médicos completos</h2>
+                <p>Todo lo que tu mascota necesita bajo un mismo techo. Desde chequeos de rutina hasta intervenciones
+                    quirúrgicas complejas.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card" data-animate="fade-up">
+                    <i class="ph ph-heartbeat service-icon"></i>
+                    <h3>Consulta General</h3>
+                    <p>Revisiones completas para asegurar que tu compañero está en su peso y estado óptimo.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card" data-animate="fade-up">
+                    <i class="ph ph-shield-check service-icon"></i>
+                    <h3>Medicina Preventiva</h3>
+                    <p>Anticiparse es la mejor cura. Planes de salud diseñados para cada etapa de su vida.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card" data-animate="fade-up">
+                    <i class="ph ph-syringe service-icon"></i>
+                    <h3>Vacunación y Desparasitación</h3>
+                    <p>Protege a tu mascota de enfermedades graves con un calendario de prevención estricto.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card" data-animate="fade-up">
+                    <i class="ph ph-first-aid service-icon"></i>
+                    <h3>Urgencias</h3>
+                    <p>Atención prioritaria y rápida cuando cada segundo cuenta para la vida de tu mascota.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="service-card" data-animate="fade-up">
+                    <i class="ph ph-bandaids service-icon"></i>
+                    <h3>Cirugía Segura</h3>
+                    <p>Quirófano equipado con monitorización avanzada para maximizar la seguridad.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="service-card" data-animate="fade-up">
+                    <i class="ph ph-microscope service-icon"></i>
+                    <h3>Laboratorio y Analíticas</h3>
+                    <p>Resultados rápidos en la propia clínica para diagnósticos precisos sin esperas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us section-padding" id="por-que-elegirnos">
+        <div class="container why-us-container">
+            <div class="why-us-image" data-animate="fade-right">
+                <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
+                    alt="Perro siendo examinado por un veterinario">
+                <div class="experience-badge">
+                    <span class="number">+10</span>
+                    <span class="text">Años de<br>Experiencia</span>
+                </div>
+            </div>
+            <div class="why-us-content" data-animate="fade-left">
+                <h2>Por qué las familias confían en Vivalnet</h2>
+                <p>Sabemos que tu mascota es un miembro más de la familia. Por eso, hemos diseñado una experiencia
+                    veterinaria distinta: sin estrés, transparente y profundamente humana.</p>
+
+                <ul class="benefits-list">
+                    <li>
+                        <i class="ph-fill ph-check-circle"></i>
+                        <div>
+                            <strong>Seguimiento personalizado de cada caso</strong>
+                            <span>Conocemos a tu mascota por su nombre, no por un número de expediente.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ph-fill ph-check-circle"></i>
+                        <div>
+                            <strong>Espacios libres de estrés (Fear Free)</strong>
+                            <span>Protocolos de trato amable que reducen la ansiedad de perros y gatos.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ph-fill ph-check-circle"></i>
+                        <div>
+                            <strong>Diagnóstico rápido bajo el mismo techo</strong>
+                            <span>Contamos con radiografía digital y laboratorio propio.</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="#reserva" class="btn btn-primary mt-4">Descubre la diferencia</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emotional Section -->
+    <section class="emotional-section section-padding">
+        <div class="container emotional-container" data-animate="zoom-in">
+            <div class="emotional-content">
+                <h2>Estarán en las mejores manos. Y tú, tendrás la máxima tranquilidad.</h2>
+                <p>Nuestra vocación nace del amor incondicional por los animales. Tratamos a tu compañero de vida
+                    exactamente con el mismo cuidado, respeto y cariño con el que trataríamos a los nuestros.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section-padding" id="testimonios">
+        <div class="container">
+            <div class="section-header text-center" data-animate="fade-up">
+                <h2>Lo que opinan nuestros pacientes de 4 patas (y sus dueños)</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card" data-animate="fade-up">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Increíble el trato. Mi perro Max siempre tenía terror de ir al veterinario, pero
+                        aquí entra moviendo la cola. La doctora Ana tiene una empatía brutal. 100% recomendados."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+                            alt="Carlos Gómez">
+                        <div>
+                            <strong>Carlos Gómez</strong>
+                            <span>Dueño de Max (Golden Retriever)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card" data-animate="fade-up" data-delay="100">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Llevé a mi gata por una urgencia y actuaron rapidísimo. Te explican todo con
+                        claridad y transparencia en los precios. Las instalaciones son súper limpias y modernas."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+                            alt="Marta R.">
+                        <div>
+                            <strong>Marta R.</strong>
+                            <span>Dueña de Luna (Gata Persa)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card" data-animate="fade-up" data-delay="200">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Son nuestra clínica de confianza desde hace 5 años. Ya sea para vacunas o dudas,
+                        siempre nos atienden con una sonrisa. Además, gestionar la cita por móvil es comodísimo."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150"
+                            alt="Elena y Diego">
+                        <div>
+                            <strong>Elena y Diego</strong>
+                            <span>Dueños de Thor (Bulldog)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta section-padding" id="reserva">
+        <div class="container final-cta-container" data-animate="fade-up">
+            <div class="cta-content">
+                <h2>¿Listo para darle la mejor atención a tu mascota?</h2>
+                <p>Reserva tu cita hoy mismo o contáctanos si necesitas asistencia inmediata. Estamos listos para
+                    ayudarte.</p>
+                <div class="cta-actions">
+                    <div class="magnetic-wrap">
+                        <a href="#" class="btn btn-primary btn-large cta-pulse">
+                            Reservar Cita Online
+                        </a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#" class="btn btn-outline btn-large">
+                            <i class="ph ph-phone"></i>
+                            Llamar: 900 123 456
+                        </a>
+                    </div>
+                </div>
+                <p class="cta-disclaimer"><i class="ph ph-shield-check"></i> Cero compromiso. Si tienes dudas,
+                    contáctanos por WhatsApp primero.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Brand -->
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo">
+                    <img src="img/VitalVet_veterinario_202603211912-Photoroom.png"
+                        alt="Vivalnet Clínica Veterinaria Logo">
+                    <span>Vivalnet</span>
+                </a>
+                <p>Clínica veterinaria especializada en el cuidado avanzado y preventivo de perros y gatos. Tu familia
+                    de 4 patas, en buenas manos.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-links">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="ph ph-map-pin"></i> Calle Vivaldi 45, Local 2, Ciudad</li>
+                    <li><i class="ph ph-phone"></i> +34 900 123 456</li>
+                    <li><i class="ph ph-envelope-simple"></i> urgencias@vivalnet.es</li>
+                    <li><i class="ph ph-whatsapp-logo"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+
+            <!-- Schedule -->
+            <div class="footer-links footer-schedule">
+                <h3>Horario de Atención</h3>
+                <ul>
+                    <li><strong>Lunes - Viernes:</strong> 09:00 - 20:30</li>
+                    <li><strong>Sábados:</strong> 10:00 - 14:00</li>
+                    <li><strong class="text-accent">Servicio de Urgencias:</strong> 24/7 (Solo con llamada previa)</li>
+                </ul>
+            </div>
+
+            <!-- Maps/Legal -->
+            <div class="footer-links">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="nuestro-equipo.html">Nuestro Equipo</a></li>
+                    <li><a href="consejos-salud.html">Consejos de Salud</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Vivalnet Veterinaria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

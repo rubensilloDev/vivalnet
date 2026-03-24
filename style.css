@@ -1,0 +1,2774 @@
+/* =========================================================================
+   VIVALNET - CLÍNICA VETERINARIA
+   Archivo de estilos principal (CSS)
+   =========================================================================
+   ÍNDICE DE SECCIONES:
+    1.  Variables globales (colores, fuentes, sombras...)
+    2.  Modo oscuro
+    3.  Reset general y estilos base
+    4.  Cursor personalizado
+    5.  Tipografía y utilidades
+    6.  Botones
+    7.  Botón flotante de WhatsApp
+    8.  Barra de navegación
+    9.  Sección Hero (presentación principal)
+   10.  Banda de noticias animada (ticker)
+   11.  Bloque de confianza
+   12.  Sección de servicios (diseño Bento)
+   13.  Sección "¿Por qué elegirnos?"
+   14.  Sección emocional
+   15.  Testimonios
+   16.  Llamada a la acción final (CTA)
+   17.  Pie de página (Footer)
+   18.  Animaciones al hacer scroll
+   19.  Diseño responsivo (adaptación a móvil y tablet)
+   ========================================================================= */
+
+
+/* =========================================================================
+   1. VARIABLES GLOBALES
+   Aquí definimos los colores, tipografías, sombras y radios que usamos
+   en todo el sitio. Cambiar un valor aquí lo actualiza en todas partes.
+   ========================================================================= */
+:root {
+    /* --- Paleta de colores principal --- */
+    --color-primary: #0D9488;
+    /* Verde azulado principal */
+    --color-primary-hover: #0F766E;
+    /* Verde azulado al pasar el cursor */
+    --color-primary-light: #CCFBF1;
+    /* Verde azulado muy claro (fondos suaves) */
+    --color-secondary: #F59E0B;
+    /* Amarillo/ámbar para acentos */
+    --color-secondary-hover: #D97706;
+    /* Amarillo al pasar el cursor */
+    --color-accent: #10B981;
+    /* Verde esmeralda como acento adicional */
+
+    /* --- Colores del tema claro (fondo, texto, bordes) --- */
+    --color-bg-base: #FAFAFB;
+    /* Fondo del cuerpo de la página */
+    --color-bg-surface: #FFFFFF;
+    /* Fondo de tarjetas y elementos flotantes */
+    --color-text-main: #1E293B;
+    /* Texto principal (oscuro) */
+    --color-text-muted: #64748B;
+    /* Texto secundario (gris) */
+    --color-border: #E2E8F0;
+    /* Color de los bordes */
+
+    /* --- Efecto glassmorphism (vidrio esmerilado) --- */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    /* Fondo semitransparente */
+    --glass-border: rgba(255, 255, 255, 0.4);
+    /* Borde semitransparente */
+
+    /* --- Sombras (pequeña, mediana y grande) --- */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.10);
+
+    /* --- Brillo de neón (glow) para el hover de botones --- */
+    --glow-primary: 0 0 20px rgba(13, 148, 136, 0.3);
+    --glow-secondary: 0 0 20px rgba(245, 158, 11, 0.3);
+
+    /* --- Bordes redondeados --- */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 32px;
+    --radius-full: 9999px;
+    /* Totalmente ovalado (para pastillas y botones redondos) */
+
+    /* --- Tipografías --- */
+    --font-heading: 'Outfit', sans-serif;
+    /* Para títulos */
+    --font-body: 'Inter', sans-serif;
+    /* Para textos corridos */
+
+    /* --- Transiciones de animación --- */
+    --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Suave y con rebote */
+    --transition-fast: all 0.25s ease;
+    /* Rápida y lineal */
+}
+
+
+/* =========================================================================
+   2. MODO OSCURO
+   Cuando el usuario activa el modo oscuro, estas variables reemplazan
+   a las del tema claro, cambiando los colores del sitio.
+   ========================================================================= */
+[data-theme="dark"] {
+    --color-bg-base: #020617;
+    /* Fondo muy oscuro (casi negro) */
+    --color-bg-surface: #0F172A;
+    /* Fondo de tarjetas en oscuro */
+    --color-text-main: #F8FAFC;
+    /* Texto claro */
+    --color-text-muted: #94A3B8;
+    /* Texto secundario en oscuro */
+    --color-border: #1E293B;
+    /* Bordes oscuros */
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    /* Vidrio oscuro */
+    --glass-border: rgba(255, 255, 255, 0.1);
+
+    /* Sombras más fuertes porque el fondo es oscuro */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================================================
+   3. RESET GENERAL Y ESTILOS BASE
+   Eliminamos márgenes y rellenos por defecto del navegador y establecemos
+   configuraciones generales para toda la página.
+   ========================================================================= */
+
+/* Aplica box-sizing a todos los elementos para un control más fácil del tamaño */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background-color: #0D9488;
+    color: white;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Desplazamiento suave al hacer clic en anclas */
+    scroll-padding-top: 100px;
+    /* Espacio superior para que la navbar no tape el contenido */
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-main);
+    line-height: 1.6;
+    /* Altura de línea cómoda para la lectura */
+    overflow-x: hidden;
+    /* Evita el scroll horizontal */
+    -webkit-font-smoothing: antialiased;
+    /* Texto más nítido en pantallas Mac */
+    cursor: none;
+    /* Ocultamos el cursor por defecto (usamos uno personalizado) */
+}
+
+/* Imágenes responsivas por defecto */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Quitamos el subrayado y heredamos el color en todos los enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+/* Quitamos los puntos de las listas */
+ul {
+    list-style: none;
+}
+
+/* Estilos base para todos los títulos (h1 a h6) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+}
+
+
+/* =========================================================================
+   4. CURSOR PERSONALIZADO
+   Reemplazamos el cursor estándar del navegador por una patita de animal.
+   Solo se muestra en pantallas con ratón/trackpad (pointer: fine).
+   ========================================================================= */
+
+/* Cursor principal (el icono de la patita) */
+.custom-cursor {
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    /* Centramos el icono en el punto de clic */
+    margin-top: -12px;
+    color: var(--color-primary);
+    position: fixed;
+    pointer-events: none;
+    /* No interfiere con los clics */
+    z-index: 9999;
+    /* Siempre encima de todo */
+    display: none;
+    /* Oculto por defecto; se muestra con @media abajo */
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: transform 0.05s ease-out;
+}
+
+/* Círculo que sigue al cursor con un ligero retraso */
+.cursor-follower {
+    width: 45px;
+    height: 45px;
+    margin-left: -22.5px;
+    margin-top: -22.5px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.12s cubic-bezier(0.23, 1, 0.32, 1), background 0.3s;
+    display: none;
+}
+
+/* Solo mostramos el cursor personalizado en dispositivos con ratón */
+@media (pointer: fine) {
+
+    .custom-cursor,
+    .cursor-follower {
+        display: flex;
+    }
+}
+
+/* Efecto cuando el cursor pasa sobre un elemento interactivo */
+.cursor-hover .custom-cursor {
+    transform: scale(3);
+    /* El icono crece */
+}
+
+.cursor-hover .cursor-follower {
+    transform: scale(1.5);
+    background: rgba(13, 148, 136, 0.1);
+    border-color: transparent;
+}
+
+
+/* =========================================================================
+   5. UTILIDADES Y CLASES REUTILIZABLES
+   Clases pequeñas de uso general en todo el HTML.
+   ========================================================================= */
+
+/* Contenedor centrado con ancho máximo */
+.container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Relleno estándar para las secciones */
+.section-padding {
+    padding: 6rem 0;
+}
+
+/* Centrar texto */
+.text-center {
+    text-align: center;
+}
+
+/* Texto con degradado de color (efecto premium) */
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Texto en color primario */
+.text-accent {
+    color: var(--color-primary);
+}
+
+/* Margen superior estándar */
+.mt-4 {
+    margin-top: 2rem;
+}
+
+
+/* =========================================================================
+   6. BOTONES
+   Estilos para todos los tipos de botones del sitio.
+   ========================================================================= */
+
+/* Estilo base compartido por todos los botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    /* Totalmente redondeado */
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+    font-size: 1rem;
+}
+
+/* Iconos dentro de los botones */
+.btn i {
+    font-size: 1.25rem;
+}
+
+/* Pequeño encogimiento al hacer clic */
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* --- Botón primario (fondo verde) --- */
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 8px 16px -4px rgba(13, 148, 136, 0.4);
+    position: relative;
+    overflow: hidden;
+    /* Para el efecto de brillo que aparece al hacer hover */
+}
+
+/* Efecto de destello al pasar el cursor (pseudo-elemento) */
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.btn-primary:hover::after {
+    opacity: 1;
+    /* Aparece el destello al hover */
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+    box-shadow: var(--glow-primary);
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* --- Botón secundario (fondo amarillo) --- */
+.btn-secondary {
+    background: var(--color-secondary);
+    color: white;
+    box-shadow: 0 8px 16px -4px rgba(245, 158, 11, 0.4);
+}
+
+.btn-secondary:hover {
+    background: var(--color-secondary-hover);
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* --- Botón con borde (outline) --- */
+.btn-outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- Botón grande (para llamadas a la acción principales) --- */
+.btn-large {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
+    letter-spacing: 0.5px;
+}
+
+/* --- Animación pulsante para el botón "reservar cita" --- */
+.cta-pulse {
+    animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0px rgba(13, 148, 136, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(13, 148, 136, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0px rgba(13, 148, 136, 0);
+    }
+}
+
+/* Contenedor para el efecto magnético de los botones (controlado con JS) */
+.magnetic-wrap {
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+
+/* =========================================================================
+   7. BOTÓN FLOTANTE DE WHATSAPP
+   Icono fijo en la esquina inferior derecha que flota para llamar la atención.
+   ========================================================================= */
+.btn-whatsapp-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    /* Verde de WhatsApp */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: var(--transition-smooth);
+    animation: floatUpDown 3s ease-in-out infinite;
+    /* Sube y baja continuamente */
+}
+
+.btn-whatsapp-floating:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 25px rgba(37, 211, 102, 0.6);
+}
+
+/* Animación de flotación: sube y baja suavemente */
+@keyframes floatUpDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================================================================
+   8. BARRA DE NAVEGACIÓN
+   Menú superior fijo con efecto de vidrio esmerilado (glassmorphism).
+   ========================================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    /* Efecto de desenfoque del fondo */
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
+    transition: var(--transition-smooth);
+    padding: 1.5rem 0;
+}
+
+/* Cuando el usuario hace scroll, la navbar se hace más compacta */
+.navbar.scrolled {
+    padding: 0.75rem 0;
+    box-shadow: var(--shadow-md);
+    background: var(--glass-bg);
+}
+
+/* Botón para cambiar entre modo claro y oscuro */
+.theme-toggle {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: var(--transition-smooth);
+    margin-right: 1rem;
+}
+
+/* Colores del botón en modo oscuro */
+[data-theme="dark"] .theme-toggle {
+    background: #1E293B;
+    color: #FACC15;
+    /* Amarillo para el icono de la luna/sol */
+}
+
+/* Pequeña rotación al pasar el cursor */
+.theme-toggle:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Fila principal de la navbar: logo a la izquierda, links al centro, acciones a la derecha */
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo de la clínica */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Lista de enlaces de navegación */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Línea subrayada animada que aparece al hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    /* Empieza invisible */
+    height: 2px;
+    background: var(--color-primary);
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    /* Se expande al hacer hover */
+}
+
+/* Área de acciones (botones) a la derecha de la navbar */
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Botón hamburguesa para móvil (oculto en escritorio) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text-main);
+    cursor: pointer;
+}
+
+
+/* =========================================================================
+   9. SECCIÓN HERO (PRESENTACIÓN PRINCIPAL)
+   Primera sección que ve el usuario. Ocupa toda la pantalla.
+   ========================================================================= */
+.hero {
+    position: relative;
+    padding-top: 150px;
+    /* Espacio para la navbar fija */
+    padding-bottom: 80px;
+    min-height: 100vh;
+    /* Ocupa como mínimo toda la altura de la pantalla */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Contenedor de las figuras decorativas de fondo */
+.hero-bg-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Detrás de todo el contenido */
+    overflow: hidden;
+}
+
+/* Estilo base para cada figura geométrica de fondo */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Muy difuminadas para un efecto suave */
+    opacity: 0.4;
+}
+
+/* Figura grande en la esquina superior derecha */
+.shape-1 {
+    top: -10%;
+    right: -5%;
+    width: 50vw;
+    height: 50vw;
+    background: linear-gradient(135deg, var(--color-primary-light), #C2FFE9);
+    animation: drift 15s ease-in-out infinite alternate;
+}
+
+/* Figura grande en la esquina inferior izquierda */
+.shape-2 {
+    bottom: -10%;
+    left: -10%;
+    width: 40vw;
+    height: 40vw;
+    background: linear-gradient(135deg, #FEF3C7, #FFE4E6);
+    animation: drift 12s ease-in-out infinite alternate-reverse;
+}
+
+/* Animación: las figuras se mueven levemente como si flotaran */
+@keyframes drift {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(5%, 10%) scale(1.1) rotate(10deg);
+    }
+
+    100% {
+        transform: translate(10%, 5%) scale(1) rotate(-10deg);
+    }
+}
+
+/* Diseño de dos columnas: texto a la izquierda, imagen a la derecha */
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Etiqueta pequeña de "noticia" o categoría encima del título */
+.hero-content .badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(13, 148, 136, 0.1);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+}
+
+/* Título principal (H1) */
+.hero-content h1 {
+    font-size: 3.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+/* Párrafo descriptivo debajo del título */
+.hero-content p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+}
+
+/* Grupo de botones del hero */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+/* Pequeños indicadores de confianza (ej. "500+ clientes") */
+.trust-signals {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.signal {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+.signal i {
+    color: var(--color-accent);
+    font-size: 1.25rem;
+}
+
+/* Contenedor de la imagen principal del hero */
+.hero-image-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    z-index: 1;
+}
+
+.hero-main-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+    aspect-ratio: 4/5;
+    /* Proporción fija para la imagen */
+}
+
+/* Tarjeta de vidrio que aparece flotando sobre la imagen (efecto glassmorphism) */
+.image-glass-card {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+    animation: floatUpDown 5s ease-in-out infinite;
+    max-width: 280px;
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+}
+
+/* Brillo diagonal dentro de la tarjeta de vidrio */
+.image-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Avatar circular dentro de la tarjeta */
+.user-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Nombre del usuario en la tarjeta */
+.user-text strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+}
+
+/* Descripción o reseña del usuario */
+.user-text span {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    line-height: 1.2;
+    display: block;
+}
+
+
+/* =========================================================================
+   10. BANDA DE NOTICIAS ANIMADA (TICKER)
+   Franja de color con texto que se desplaza de derecha a izquierda
+   de forma continua, como una cinta de noticias.
+   ========================================================================= */
+.ticker-band {
+    background: var(--color-primary);
+    color: white;
+    padding: 12px 0;
+    overflow: hidden;
+    /* Oculta el texto que sale por los bordes */
+    white-space: nowrap;
+    /* Evita que el texto salte a otra línea */
+    position: relative;
+    z-index: 20;
+    margin: 0 0 8rem;
+}
+
+/* El contenedor del texto empieza fuera de pantalla a la derecha */
+.ticker-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 30s linear infinite;
+}
+
+/* Cada elemento individual dentro del ticker */
+.ticker-item {
+    display: inline-block;
+    padding: 0 40px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ticker-item i {
+    margin-right: 10px;
+}
+
+/* El texto se desplaza de derecha a izquierda */
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* =========================================================================
+   11. BLOQUE DE CONFIANZA (TRUST BLOCK)
+   Cuatro tarjetas con estadísticas o garantías que generan confianza.
+   Aparece justo debajo del hero.
+   ========================================================================= */
+.trust-block {
+    margin-top: -80px;
+    /* Se superpone al hero para un diseño continuo */
+    position: relative;
+    z-index: 10;
+    padding: 0;
+}
+
+/* Cuadrícula de 4 columnas para las tarjetas */
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/* Tarjeta individual de confianza */
+.trust-card {
+    background: var(--color-bg-surface);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.trust-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+/* Círculo con icono dentro de cada tarjeta */
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin: 0 auto 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+/* El icono gira y cambia color al hacer hover en la tarjeta */
+.trust-card:hover .icon-wrapper {
+    background: var(--color-primary);
+    color: white;
+    transform: rotate(10deg) scale(1.1);
+}
+
+.trust-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+}
+
+.trust-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+
+/* =========================================================================
+   12. SECCIÓN DE SERVICIOS (DISEÑO BENTO GRID)
+   Las tarjetas de servicio usan un diseño "Bento" donde algunos elementos
+   ocupan más espacio que otros, creando un layout variado y moderno.
+   ========================================================================= */
+
+/* Cuadrícula de 6 columnas */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(280px, auto);
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+/* Estilo base de cada tarjeta de servicio */
+.service-card {
+    background: var(--color-bg-surface);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s;
+}
+
+/* Distribución Bento: las primeras 2 tarjetas ocupan la mitad del ancho cada una */
+.service-card:nth-child(1) {
+    grid-column: span 3;
+}
+
+.service-card:nth-child(2) {
+    grid-column: span 3;
+}
+
+/* Las siguientes 3 tarjetas se reparten en tercios */
+.service-card:nth-child(3) {
+    grid-column: span 2;
+}
+
+.service-card:nth-child(4) {
+    grid-column: span 2;
+}
+
+.service-card:nth-child(5) {
+    grid-column: span 2;
+}
+
+/* La última tarjeta ocupa todo el ancho */
+.service-card:nth-child(6) {
+    grid-column: span 6;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    justify-content: space-around;
+}
+
+.service-card:nth-child(6) .service-icon {
+    margin-bottom: 0;
+    margin-right: 2rem;
+}
+
+/* Degradado que aparece desde abajo al hacer hover (efecto de luz) */
+.service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Cubre toda la tarjeta */
+    background: linear-gradient(to top, var(--color-primary-light), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.service-card:hover {
+    box-shadow: 0 30px 60px -15px rgba(13, 148, 136, 0.2);
+    border-color: var(--color-primary);
+}
+
+.service-card:hover::after {
+    opacity: 0.1;
+    /* El degradado aparece suavemente */
+}
+
+/* Icono grande con degradado de color */
+.service-icon {
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: auto;
+    transition: var(--transition-smooth);
+    display: block;
+}
+
+/* El icono gira levemente al hacer hover */
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    /* Por encima del pseudo-elemento ::after */
+}
+
+.service-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* En tablet, cambiamos a 2 columnas */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-card:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .service-card:nth-child(6) {
+        grid-column: span 2;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* En móvil, una sola columna */
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card:nth-child(n) {
+        grid-column: span 1;
+    }
+}
+
+
+/* =========================================================================
+   13. SECCIÓN "¿POR QUÉ ELEGIRNOS?"
+   Dos columnas: imagen a la izquierda y lista de beneficios a la derecha.
+   ========================================================================= */
+.why-us-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.why-us-image {
+    position: relative;
+    border-radius: var(--radius-lg);
+}
+
+.why-us-image img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Círculo decorativo con el número de años de experiencia */
+.experience-badge {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: var(--color-primary);
+    color: white;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    animation: floatUpDown 5s ease-in-out infinite reverse;
+}
+
+.experience-badge .number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.experience-badge .text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.why-us-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.why-us-content>p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Lista de beneficios con iconos */
+.benefits-list li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.benefits-list i {
+    font-size: 1.75rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
+    /* El icono no se encoge */
+}
+
+.benefits-list strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+    margin-bottom: 0.25rem;
+}
+
+.benefits-list span {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================================
+   14. SECCIÓN EMOCIONAL
+   Franja con imagen de fondo y texto motivador, para conectar emocionalmente.
+   ========================================================================= */
+.emotional-section {
+    /* Imagen de fondo con overlay oscuro para que el texto sea legible */
+    background: linear-gradient(rgba(13, 27, 42, 0.8),
+            rgba(13, 27, 42, 0.9)), url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=1600') center/cover fixed;
+    color: white;
+    text-align: center;
+}
+
+/* Contenido centrado con ancho máximo para mejor legibilidad */
+.emotional-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.emotional-content h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.emotional-content p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+
+/* =========================================================================
+   15. TESTIMONIOS
+   Reseñas de clientes en una cuadrícula de tres columnas.
+   ========================================================================= */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Tarjeta individual de testimonio */
+.testimonial-card {
+    background: var(--color-bg-surface);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    /* Sube un poco al hacer hover */
+    box-shadow: var(--shadow-md);
+}
+
+/* Estrellas de valoración */
+.stars {
+    color: var(--color-secondary);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.25rem;
+}
+
+/* Texto de la reseña */
+.review {
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Fila inferior con la foto y nombre del cliente */
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.reviewer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviewer strong {
+    display: block;
+    font-family: var(--font-heading);
+    color: var(--color-text-main);
+}
+
+.reviewer span {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+
+/* =========================================================================
+   16. LLAMADA A LA ACCIÓN FINAL (CTA)
+   Sección destacada que invita al usuario a reservar cita.
+   Tiene un degradado animado giratorio en el fondo.
+   ========================================================================= */
+.final-cta {
+    background: var(--color-bg-surface);
+}
+
+/* Tarjeta interior con degradado */
+.final-cta-container {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: var(--radius-lg);
+    padding: 5rem 2rem;
+    text-align: center;
+    color: white;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fondo giratorio decorativo (efecto de luz giratoria) */
+.final-cta-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    animation: rotate 20s linear infinite;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Texto del CTA, por encima del fondo animado */
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+}
+
+/* Botones del CTA en fila */
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+/* Versión blanca del botón outline para el fondo oscuro */
+.cta-actions .btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-actions .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Botón primario invertido (blanco con texto verde) */
+.cta-actions .btn-primary {
+    background: white;
+    color: var(--color-primary);
+}
+
+.cta-actions .btn-primary:hover {
+    background: var(--color-bg-base);
+    transform: translateY(-2px);
+}
+
+/* Texto de aviso pequeño debajo de los botones */
+.cta-disclaimer {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+
+/* =========================================================================
+   17. PIE DE PÁGINA (FOOTER)
+   Área inferior del sitio con información de contacto, enlaces y redes.
+   ========================================================================= */
+.footer {
+    background: #0F172A;
+    /* Azul muy oscuro (Slate 900) */
+    color: #CBD5E1;
+    /* Gris claro (Slate 300) */
+    padding: 5rem 0 0;
+    font-size: 0.95rem;
+}
+
+.footer h3 {
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Cuadrícula del footer: columna ancha para la marca, luego columnas iguales */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* Logo en blanco dentro del footer */
+.footer-logo {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+    filter: brightness(0) invert(1);
+    /* Convierte el logo a blanco */
+}
+
+.footer-brand p {
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+}
+
+/* Iconos de redes sociales */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.social-links a:hover {
+    background: var(--color-primary);
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Lista de enlaces del footer */
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.footer-links i {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-top: 2px;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary-light);
+    padding-left: 5px;
+    /* Pequeño desplazamiento al hover */
+}
+
+.footer-schedule .text-accent {
+    color: var(--color-secondary);
+    /* Amarillo para destacar horarios especiales */
+}
+
+/* Barra inferior del footer con el copyright */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================================
+   18. ANIMACIONES AL HACER SCROLL
+   Los elementos con el atributo [data-animate] empiezan invisibles y aparecen
+   suavemente cuando entran en la pantalla (controlado con JavaScript).
+   ========================================================================= */
+
+/* Estado inicial: invisible y desplazado */
+[data-animate] {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animación: aparece subiendo desde abajo */
+[data-animate="fade-up"] {
+    transform: translateY(40px);
+}
+
+/* Animación: aparece desde la derecha */
+[data-animate="fade-left"] {
+    transform: translateX(40px);
+}
+
+/* Animación: aparece desde la izquierda */
+[data-animate="fade-right"] {
+    transform: translateX(-40px);
+}
+
+/* Animación: aparece aumentando de tamaño */
+[data-animate="zoom-in"] {
+    transform: scale(0.95);
+}
+
+/* Cuando el elemento es visible (clase añadida con JS), vuelve a posición natural */
+.is-visible[data-animate] {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+
+/* =========================================================================
+   19. DISEÑO RESPONSIVO (ADAPTACIÓN A DISTINTOS TAMAÑOS DE PANTALLA)
+   Usamos media queries para reorganizar el contenido en pantallas pequeñas.
+   Las pantallas objetivo son:
+    - ≤ 1024px → Tablet apaisada
+    - ≤ 768px  → Tablet / móvil grande
+    - ≤ 480px  → Móvil pequeño
+   ========================================================================= */
+
+/* ---- TABLET (hasta 1024px de ancho) ---- */
+@media (max-width: 1024px) {
+
+    /* Las cuatro columnas del bloque de confianza pasan a dos */
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Los servicios pasan a dos columnas */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* "Por qué elegirnos" pasa a una sola columna */
+    .why-us-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    /* La imagen se mueve arriba del texto */
+    .why-us-image {
+        order: -1;
+    }
+
+    /* Los testimonios pasan a dos columnas */
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* El footer pasa a dos columnas */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================================
+   20. PÁGINA: NUESTRO EQUIPO
+   Estilos exclusivos de nuestro-equipo.html
+   ========================================================================= */
+
+/* --- Hero de página interior (fondo con degradado del color primario) --- */
+.page-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    padding: 12rem 0 6rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Figura decorativa animada de fondo en el hero */
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 80vw;
+    height: 80vw;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+    border-radius: 50%;
+    animation: drift 18s ease-in-out infinite alternate;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Etiqueta badge en el hero de páginas interiores */
+.page-hero .badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.page-hero h1 {
+    color: white;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+}
+
+.page-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* --- Sección de filosofía del equipo --- */
+.philosophy-section {
+    background: var(--color-bg-base);
+}
+
+/* Cuadrícula de 3 columnas para los valores */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+/* Tarjeta de valor / filosofía */
+.philosophy-card {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    border: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+/* Número decorativo gigante en el fondo de la tarjeta */
+.philosophy-card::before {
+    content: attr(data-number);
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-family: var(--font-heading);
+    font-size: 7rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    opacity: 0.05;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+/* Icono cuadrado de cada valor */
+.philosophy-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+.philosophy-card:hover .philosophy-icon {
+    background: var(--color-primary);
+    color: white;
+    transform: rotate(8deg) scale(1.1);
+}
+
+.philosophy-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.philosophy-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* --- Sección del equipo veterinario --- */
+.team-section {
+    background: var(--color-bg-base);
+}
+
+/* Cuadrícula de 3 columnas para los perfiles */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+/* Tarjeta de perfil de veterinario */
+.vet-card {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.vet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+/* Contenedor de la foto con efecto zoom al hacer hover */
+.vet-photo {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/4.5;
+}
+
+.vet-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.vet-card:hover .vet-photo img {
+    transform: scale(1.05);
+}
+
+/* Overlay verde con botones sociales que aparece al hover */
+.vet-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13, 148, 136, 0.9), transparent 50%);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.vet-card:hover .vet-overlay {
+    opacity: 1;
+}
+
+/* Botones circulares de redes sociales en el overlay */
+.vet-social-btn {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    transform: translateY(20px); /* Empieza desplazado hacia abajo */
+    transition: var(--transition-smooth);
+}
+
+.vet-card:hover .vet-social-btn {
+    transform: translateY(0); /* Sube al hacer hover */
+}
+
+/* Retraso escalonado para cada botón social */
+.vet-social-btn:nth-child(2) { transition-delay: 0.05s; }
+.vet-social-btn:nth-child(3) { transition-delay: 0.10s; }
+
+.vet-social-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Bloque de información del veterinario */
+.vet-info {
+    padding: 1.75rem;
+}
+
+/* Etiqueta de especialidad médica */
+.vet-specialty {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 0.75rem;
+}
+
+.vet-info h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Cargo o rol del veterinario */
+.vet-role {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.vet-info p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.25rem;
+}
+
+/* Fila de estadísticas numéricas del veterinario */
+.vet-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.vet-stat {
+    text-align: center;
+}
+
+.vet-stat strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.vet-stat span {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+}
+
+/* --- Sección de estadísticas del equipo (banda verde) --- */
+.stats-section {
+    background: linear-gradient(135deg, var(--color-primary), #0A7A70);
+    color: white;
+}
+
+/* Cuadrícula de 4 columnas para las cifras */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 2rem 1rem;
+}
+
+/* Número grande de la estadística con texto en degradado blanco */
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, white, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+/* --- Sección de unirse al equipo --- */
+.join-team-section {
+    background: var(--color-bg-surface);
+}
+
+/* Tarjeta con borde punteado para la oferta de trabajo */
+.join-card {
+    background: var(--color-bg-base);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 4rem 2rem;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.join-card:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+}
+
+/* Icono grande de la tarjeta */
+.join-icon {
+    font-size: 4rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+.join-card:hover .join-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.join-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.join-card p {
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+
+/* =========================================================================
+   21. PÁGINA: CONSEJOS DE SALUD
+   Estilos exclusivos de consejos-salud.html
+   ========================================================================= */
+
+/* Hero de "Consejos de Salud" con degradado cálido (verde→amarillo) */
+.page-hero.consejos-hero {
+    background: linear-gradient(135deg, #0A7A70 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
+}
+
+/* Segunda figura decorativa (la primera la hereda de .page-hero::before) */
+.page-hero.consejos-hero::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -15%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+    border-radius: 50%;
+}
+
+/* Ajuste de margen del párrafo en este hero */
+.page-hero.consejos-hero p {
+    margin: 0 auto 2rem;
+}
+
+/* Buscador glassmorphism del hero de consejos */
+.hero-search {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: var(--radius-full);
+    padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 0.5rem;
+}
+
+.hero-search input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+}
+
+.hero-search input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.hero-search button {
+    background: white;
+    color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.hero-search button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* --- Barra de filtros por categoría (sticky bajo el navbar) --- */
+.filters-section {
+    background: var(--color-bg-surface);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 80px;
+    z-index: 50;
+}
+
+/* Fila de botones de categoría */
+.filters-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Texto "Filtrar por:" */
+.filter-label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+/* Botón/chip de categoría */
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-base);
+    color: var(--color-text-muted);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* --- Layout de dos columnas: artículos + sidebar --- */
+.content-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* --- Artículo destacado (tarjeta grande) --- */
+.article-featured {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+    transition: var(--transition-smooth);
+}
+
+.article-featured:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+/* Imagen del artículo destacado con aspect-ratio fijo */
+.article-featured-img {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/7;
+}
+
+.article-featured-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.article-featured:hover .article-featured-img img {
+    transform: scale(1.03);
+}
+
+/* Etiqueta de categoría flotando sobre la imagen */
+.article-cat-tag {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Bloque de texto del artículo destacado */
+.article-featured-body {
+    padding: 2.5rem;
+}
+
+/* Metadatos del artículo (autor, fecha, tiempo de lectura) */
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.article-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.article-featured-body h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.article-featured-body p {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* Enlace "Leer más" con flecha que avanza al hover */
+.read-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+}
+
+.read-more-link:hover {
+    gap: 0.75rem; /* La flecha se separa del texto */
+}
+
+/* --- Cuadrícula de artículos secundarios (2 columnas) --- */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* Tarjeta de artículo pequeño */
+.article-card {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-light);
+}
+
+/* Imagen de la tarjeta */
+.article-card-img {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.article-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.article-card:hover .article-card-img img {
+    transform: scale(1.06);
+}
+
+/* Texto de la tarjeta */
+.article-card-body {
+    padding: 1.5rem;
+}
+
+/* Nombre de categoría pequeño */
+.article-card-cat {
+    font-size: 0.75rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.article-card-body h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+}
+
+.article-card-body p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Pie de la tarjeta con tiempo de lectura y enlace */
+.article-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+/* --- Sidebar (columna lateral derecha) --- */
+.sidebar {
+    position: sticky;
+    top: 150px; /* Se queda bajo el navbar y los filtros */
+}
+
+/* Bloque genérico del sidebar */
+.sidebar-widget {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-widget h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-primary-light);
+}
+
+/* Lista de artículos populares */
+.popular-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.popular-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.popular-item:hover {
+    transform: translateX(4px); /* Desliza levemente a la derecha */
+}
+
+/* Miniatura cuadrada del artículo popular */
+.popular-thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.popular-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popular-item h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    line-height: 1.35;
+}
+
+.popular-item span {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+}
+
+/* Consejo rápido del día con fondo verde claro */
+.quick-tip {
+    background: linear-gradient(135deg, var(--color-primary-light), #E0FDF4);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.quick-tip-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.quick-tip-icon {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.quick-tip h3 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.quick-tip p {
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    line-height: 1.6;
+}
+
+/* Widget de newsletter con fondo degradado */
+.newsletter-widget {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    color: white;
+    text-align: center;
+}
+
+.newsletter-widget i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    opacity: 0.9;
+}
+
+.newsletter-widget h3 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter-widget p {
+    font-size: 0.875rem;
+    opacity: 0.85;
+    margin-bottom: 1.25rem;
+}
+
+/* Formulario del newsletter */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.newsletter-form input {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-full);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.9);
+    color: var(--color-text-main);
+    width: 100%;
+}
+
+.newsletter-form input:focus {
+    outline: 2px solid white;
+}
+
+.newsletter-form button {
+    padding: 0.75rem;
+    border-radius: var(--radius-full);
+    border: 2px solid white;
+    background: white;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.newsletter-form button:hover {
+    background: transparent;
+    color: white;
+}
+
+/* --- Sección de guías descargables --- */
+.guides-section {
+    background: var(--color-bg-surface);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Cuadrícula de 3 guías descargables */
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Tarjeta de guía descargable */
+.guide-card {
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+/* Variantes de color para cada guía */
+.guide-card.green {
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+    border: 1px solid #A7F3D0;
+}
+
+.guide-card.amber {
+    background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+    border: 1px solid #FDE68A;
+}
+
+.guide-card.blue {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    border: 1px solid #BFDBFE;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Icono gigante decorativo en la esquina de cada guía */
+.guide-card-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    opacity: 0.15;
+}
+
+/* Insignia cuadrada con el icono de la guía */
+.guide-icon-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.guide-card.green .guide-icon-badge { background: #10B981; color: white; }
+.guide-card.amber .guide-icon-badge { background: #F59E0B; color: white; }
+.guide-card.blue  .guide-icon-badge { background: #3B82F6; color: white; }
+
+.guide-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.guide-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+}
+
+/* Enlace de descarga de cada guía */
+.guide-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--color-text-main);
+    transition: var(--transition-fast);
+}
+
+.guide-download-btn:hover {
+    gap: 0.75rem;
+}
+
+.guide-card.green .guide-download-btn { color: #065F46; }
+.guide-card.amber .guide-download-btn { color: #92400E; }
+.guide-card.blue  .guide-download-btn { color: #1E40AF; }
+
+/* --- Banner de urgencias al final de la página --- */
+.emergency-cta {
+    background: var(--color-bg-base);
+}
+
+/* Franja oscura con información de urgencias */
+.emergency-banner {
+    background: linear-gradient(135deg, #1E293B, #0F172A);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.emergency-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Círculo pulsante rojo para urgencias */
+.emergency-icon-wrap {
+    width: 70px;
+    height: 70px;
+    background: rgba(220, 38, 38, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #EF4444;
+    flex-shrink: 0;
+    animation: pulseGlow 2s infinite;
+}
+
+.emergency-text h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.emergency-text p {
+    color: #94A3B8;
+    font-size: 0.95rem;
+}
+
+.emergency-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Botón rojo de llamada de urgencias */
+.btn-emergency {
+    background: #EF4444;
+    color: white;
+    border: none;
+}
+
+.btn-emergency:hover {
+    background: #DC2626;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Botón verde de WhatsApp de urgencias */
+.btn-whatsapp-text {
+    background: #25D366;
+    color: white;
+    border: none;
+}
+
+.btn-whatsapp-text:hover {
+    background: #1EA952;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================================
+   22. RESPONSIVO ADICIONAL (páginas interiores)
+   ========================================================================= */
+
+@media (max-width: 1024px) {
+    /* Equipo */
+    .team-grid        { grid-template-columns: repeat(2, 1fr); }
+    .philosophy-grid  { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid       { grid-template-columns: repeat(2, 1fr); }
+    /* Consejos */
+    .content-layout   { grid-template-columns: 1fr; }
+    .sidebar          { position: static; }
+    .guides-grid      { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .team-grid,
+    .philosophy-grid   { grid-template-columns: 1fr; }
+    .articles-grid     { grid-template-columns: 1fr; }
+    .filters-section   { position: static; }
+    .hero-search       { max-width: 100%; }
+
+    .emergency-left    { flex-direction: column; text-align: center; }
+    .emergency-banner  { flex-direction: column; text-align: center; }
+    .emergency-actions { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+
+    .hero-search {
+        flex-direction: column;
+        border-radius: var(--radius-lg);
+        padding: 1rem;
+    }
+
+    .hero-search input { width: 100%; }
+}
+
+
+/* ---- MÓVIL GRANDE / TABLET (hasta 768px de ancho) ---- */
+@media (max-width: 768px) {
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    /* El hero pasa a una columna (texto arriba, imagen abajo) */
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    /* Tamaño de título más pequeño para móvil */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        margin: 0 auto 2rem;
+    }
+
+    /* Botones centrados */
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .trust-signals {
+        justify-content: center;
+    }
+
+    /* El bloque de confianza deja de superponerse al hero */
+    .trust-block {
+        margin-top: 0;
+        padding-top: 4rem;
+    }
+
+    /* Una sola columna para grillas principales */
+    .trust-grid,
+    .services-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ocultamos el menú de escritorio */
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    /* Mostramos el botón hamburguesa */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Menú desplegable para móvil (se activa con JS al pulsar hamburguesa) */
+    .nav-active .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        text-align: center;
+    }
+
+    .nav-active .nav-actions {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* La tarjeta de vidrio del hero se hace más pequeña */
+    .image-glass-card {
+        bottom: -20px;
+        left: 10px;
+        max-width: 200px;
+        padding: 1rem;
+    }
+}
+
+/* ---- MÓVIL PEQUEÑO (hasta 480px de ancho) ---- */
+@media (max-width: 480px) {
+
+    /* Los botones del hero se apilan en columna y ocupan todo el ancho */
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-large {
+        width: 100%;
+    }
+
+    /* Los botones del CTA también se apilan */
+    .cta-actions {
+        flex-direction: column;
+    }
+
+    /* La insignia de experiencia se hace más pequeña */
+    .experience-badge {
+        width: 90px;
+        height: 90px;
+        top: -10px;
+        right: -10px;
+    }
+
+    .experience-badge .number {
+        font-size: 1.5rem;
+    }
+}

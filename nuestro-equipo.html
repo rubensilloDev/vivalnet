@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Equipo | Vivalnet Clínica Veterinaria</title>
+    <meta name="description"
+        content="Conoce al equipo de veterinarios expertos de Vivalnet. Profesionales apasionados por el bienestar animal con más de 10 años de experiencia combinada.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Estilos compartidos del sitio -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Todos los estilos están en style.css -->
+</head>
+
+<body>
+    <!-- Cursor personalizado (patita) -->
+    <div class="custom-cursor"><i class="ph-fill ph-paw-print"></i></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <div class="magnetic-wrap" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <a href="#" class="btn-whatsapp-floating" aria-label="Contactar por WhatsApp" style="position: static;">
+            <i class="ph-fill ph-whatsapp-logo"></i>
+        </a>
+    </div>
+
+    <!-- ==============================
+         BARRA DE NAVEGACIÓN
+         ============================== -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar-content">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="img/VitalVet_veterinario_202603211912-Photoroom.png" alt="Vivalnet Clínica Veterinaria Logo">
+                <span>Vivalnet</span>
+            </a>
+
+            <!-- Menú de navegación -->
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="nuestro-equipo.html" style="color: var(--color-primary);">Nuestro Equipo</a>
+                <a href="consejos-salud.html">Consejos de Salud</a>
+            </nav>
+
+            <!-- Acciones (botones) -->
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
+                    <i class="ph-fill ph-moon"></i>
+                </button>
+                <div class="magnetic-wrap">
+                    <a href="index.html" class="btn btn-outline"><i class="ph ph-house"></i> Inicio</a>
+                </div>
+                <div class="magnetic-wrap">
+                    <a href="index.html#reserva" class="btn btn-primary">Reservar Cita</a>
+                </div>
+            </div>
+
+            <!-- Botón hamburguesa para móvil -->
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==============================
+         HERO DE LA PÁGINA
+         ============================== -->
+    <section class="page-hero">
+        <div class="container page-hero-content" data-animate="fade-up">
+            <div class="badge"><i class="ph-fill ph-users"></i> &nbsp;Conoce a nuestros profesionales</div>
+            <h1>Un equipo creado para <span style="text-decoration: underline; text-decoration-color: rgba(255,255,255,0.4);">cuidar</span> de los tuyos</h1>
+            <p>Veterinarios apasionados, especializados y comprometidos con el bienestar de cada paciente.</p>
+        </div>
+    </section>
+
+    <!-- ==============================
+         SECCIÓN: FILOSOFÍA DEL EQUIPO
+         ============================== -->
+    <section class="philosophy-section section-padding">
+        <div class="container">
+            <div class="section-header text-center" data-animate="fade-up">
+                <h2>Nuestra filosofía de trabajo</h2>
+                <p>Los principios que guían cada consulta, cada cirugía y cada interacción con tu mascota.</p>
+            </div>
+
+            <div class="philosophy-grid">
+                <!-- Valor 1 -->
+                <div class="philosophy-card" data-number="01" data-animate="fade-up">
+                    <div class="philosophy-icon"><i class="ph ph-heart"></i></div>
+                    <h3>Medicina con compasión</h3>
+                    <p>No tratamos enfermedades, tratamos pacientes. Cada animal merece el mismo cuidado y respeto que daríamos a nuestra propia mascota.</p>
+                </div>
+
+                <!-- Valor 2 -->
+                <div class="philosophy-card" data-number="02" data-animate="fade-up">
+                    <div class="philosophy-icon"><i class="ph ph-graduation-cap"></i></div>
+                    <h3>Formación continua</h3>
+                    <p>La medicina veterinaria avanza rápido. Nuestro equipo asiste a congresos internacionales y se forma constantemente en las últimas técnicas.</p>
+                </div>
+
+                <!-- Valor 3 -->
+                <div class="philosophy-card" data-number="03" data-animate="fade-up">
+                    <div class="philosophy-icon"><i class="ph ph-chat-circle-dots"></i></div>
+                    <h3>Comunicación transparente</h3>
+                    <p>Te explicamos cada diagnóstico y tratamiento en un lenguaje claro. Sin tecnicismos innecesarios. Sin sorpresas en la factura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         SECCIÓN: ESTADÍSTICAS DEL EQUIPO
+         ============================== -->
+    <section class="stats-section section-padding">
+        <div class="container stats-grid">
+            <div class="stat-item" data-animate="zoom-in">
+                <div class="stat-number">+10</div>
+                <div class="stat-label">Años de experiencia <br>acumulada</div>
+            </div>
+            <div class="stat-item" data-animate="zoom-in">
+                <div class="stat-number">+2.400</div>
+                <div class="stat-label">Mascotas atendidas <br>al año</div>
+            </div>
+            <div class="stat-item" data-animate="zoom-in">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Especialidades <br>médicas</div>
+            </div>
+            <div class="stat-item" data-animate="zoom-in">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Tasa de satisfacción <br>de clientes</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         SECCIÓN: EQUIPO VETERINARIO
+         ============================== -->
+    <section class="team-section section-padding" id="equipo">
+        <div class="container">
+            <div class="section-header text-center" data-animate="fade-up">
+                <h2>Los veterinarios de tu mascota</h2>
+                <p>Cada miembro de nuestro equipo ha sido elegido no solo por su formación, sino también por su amor genuino hacia los animales.</p>
+            </div>
+
+            <div class="team-grid">
+
+                <!-- --- Veterinaria 1: Directora --- -->
+                <div class="vet-card" data-animate="fade-up">
+                    <div class="vet-photo">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600" alt="Dra. Ana Martínez, Directora Médica">
+                        <div class="vet-overlay">
+                            <a href="#" class="vet-social-btn" aria-label="LinkedIn de Dra. Ana Martínez">
+                                <i class="ph ph-linkedin-logo"></i>
+                            </a>
+                            <a href="#" class="vet-social-btn" aria-label="Email de Dra. Ana Martínez">
+                                <i class="ph ph-envelope-simple"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vet-info">
+                        <span class="vet-specialty">Medicina Interna</span>
+                        <h3>Dra. Ana Martínez</h3>
+                        <p class="vet-role">Directora Médica & Fundadora</p>
+                        <p>Licenciada con Matrícula de Honor por la UAB. Máster en Medicina Interna Veterinaria. Especialista en diagnóstico de enfermedades crónicas y medicina geriátrica en perros y gatos.</p>
+                        <div class="vet-stats">
+                            <div class="vet-stat">
+                                <strong>12 años</strong>
+                                <span>Experiencia</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>+800</strong>
+                                <span>Casos/año</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>Fear Free</strong>
+                                <span>Certificada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- Veterinario 2: Cirujano --- -->
+                <div class="vet-card" data-animate="fade-up">
+                    <div class="vet-photo">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600" alt="Dr. Luis Ferrer, Cirujano Veterinario">
+                        <div class="vet-overlay">
+                            <a href="#" class="vet-social-btn" aria-label="LinkedIn de Dr. Luis Ferrer">
+                                <i class="ph ph-linkedin-logo"></i>
+                            </a>
+                            <a href="#" class="vet-social-btn" aria-label="Email de Dr. Luis Ferrer">
+                                <i class="ph ph-envelope-simple"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vet-info">
+                        <span class="vet-specialty">Cirugía Veterinaria</span>
+                        <h3>Dr. Luis Ferrer</h3>
+                        <p class="vet-role">Cirujano Jefe</p>
+                        <p>Especialista en cirugía ortopédica y de tejidos blandos. Formado en la Universidad de Utrecht (Países Bajos). Más de 1.200 intervenciones quirúrgicas realizadas con éxito.</p>
+                        <div class="vet-stats">
+                            <div class="vet-stat">
+                                <strong>9 años</strong>
+                                <span>Experiencia</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>+1.200</strong>
+                                <span>Cirugías</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>ECVS</strong>
+                                <span>Diplomado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- Veterinaria 3: Urgencias --- -->
+                <div class="vet-card" data-animate="fade-up">
+                    <div class="vet-photo">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=600" alt="Dra. Sara López, Urgencias y Cuidados Intensivos">
+                        <div class="vet-overlay">
+                            <a href="#" class="vet-social-btn" aria-label="LinkedIn de Dra. Sara López">
+                                <i class="ph ph-linkedin-logo"></i>
+                            </a>
+                            <a href="#" class="vet-social-btn" aria-label="Email de Dra. Sara López">
+                                <i class="ph ph-envelope-simple"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vet-info">
+                        <span class="vet-specialty">Urgencias & UCI</span>
+                        <h3>Dra. Sara López</h3>
+                        <p class="vet-role">Especialista en Medicina de Urgencias</p>
+                        <p>Responsable de nuestro servicio de urgencias 24/7. Experta en triage, estabilización de pacientes críticos y cuidados intensivos. Rapidez y serenidad en cada emergencia.</p>
+                        <div class="vet-stats">
+                            <div class="vet-stat">
+                                <strong>7 años</strong>
+                                <span>Experiencia</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>24/7</strong>
+                                <span>Disponible</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>UCI</strong>
+                                <span>Certificada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- Veterinario 4: Dermatología --- -->
+                <div class="vet-card" data-animate="fade-up">
+                    <div class="vet-photo">
+                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=600" alt="Dr. Marcos Villa, Dermatología">
+                        <div class="vet-overlay">
+                            <a href="#" class="vet-social-btn" aria-label="LinkedIn de Dr. Marcos Villa">
+                                <i class="ph ph-linkedin-logo"></i>
+                            </a>
+                            <a href="#" class="vet-social-btn" aria-label="Email de Dr. Marcos Villa">
+                                <i class="ph ph-envelope-simple"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vet-info">
+                        <span class="vet-specialty">Dermatología</span>
+                        <h3>Dr. Marcos Villa</h3>
+                        <p class="vet-role">Especialista en Dermatología Veterinaria</p>
+                        <p>Referente en el diagnóstico y tratamiento de alergias, dermatitis atópica, hongos y patologías cutáneas en pequeños animales. Ofrece consultas tanto presenciales como de seguimiento online.</p>
+                        <div class="vet-stats">
+                            <div class="vet-stat">
+                                <strong>8 años</strong>
+                                <span>Experiencia</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>+500</strong>
+                                <span>Casos/año</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>ESVD</strong>
+                                <span>Asociado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- Veterinaria 5: Nutrición --- -->
+                <div class="vet-card" data-animate="fade-up">
+                    <div class="vet-photo">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=600" alt="Dra. Cristina Ruiz, Nutrición Animal">
+                        <div class="vet-overlay">
+                            <a href="#" class="vet-social-btn" aria-label="LinkedIn de Dra. Cristina Ruiz">
+                                <i class="ph ph-linkedin-logo"></i>
+                            </a>
+                            <a href="#" class="vet-social-btn" aria-label="Email de Dra. Cristina Ruiz">
+                                <i class="ph ph-envelope-simple"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vet-info">
+                        <span class="vet-specialty">Nutrición Clínica</span>
+                        <h3>Dra. Cristina Ruiz</h3>
+                        <p class="vet-role">Especialista en Nutrición y Dietética Animal</p>
+                        <p>Diseña planes nutricionales personalizados para mascotas con patologías crónicas, obesidad o necesidades especiales. Una dieta adecuada puede cambiar la vida de tu animal.</p>
+                        <div class="vet-stats">
+                            <div class="vet-stat">
+                                <strong>6 años</strong>
+                                <span>Experiencia</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>+300</strong>
+                                <span>Planes/año</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>ESVCN</strong>
+                                <span>Miembro</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- Auxiliar 6: Enfermería Veterinaria --- -->
+                <div class="vet-card" data-animate="fade-up">
+                    <div class="vet-photo">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=600" alt="Laura Sanz, Auxiliar y ATV Jefa">
+                        <div class="vet-overlay">
+                            <a href="#" class="vet-social-btn" aria-label="Instagram de Laura Sanz">
+                                <i class="ph ph-instagram-logo"></i>
+                            </a>
+                            <a href="#" class="vet-social-btn" aria-label="Email de Laura Sanz">
+                                <i class="ph ph-envelope-simple"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vet-info">
+                        <span class="vet-specialty">Auxiliar Técnico Veterinario</span>
+                        <h3>Laura Sanz</h3>
+                        <p class="vet-role">ATV Jefa & Coordinadora de Bienestar</p>
+                        <p>El primer rostro amable que ves al entrar. Laura coordina la experiencia de cada mascota siguiendo protocolos Fear Free para reducir el estrés desde el primer momento en la sala de espera.</p>
+                        <div class="vet-stats">
+                            <div class="vet-stat">
+                                <strong>5 años</strong>
+                                <span>En Vivalnet</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>Fear Free</strong>
+                                <span>Certificada</span>
+                            </div>
+                            <div class="vet-stat">
+                                <strong>Nivel 3</strong>
+                                <span>ATV</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- fin .team-grid -->
+        </div>
+    </section>
+
+    <!-- ==============================
+         SECCIÓN: ÚNETE AL EQUIPO
+         ============================== -->
+    <section class="join-team-section section-padding">
+        <div class="container" style="max-width: 700px;">
+            <div class="join-card" data-animate="zoom-in">
+                <i class="ph ph-plus-circle join-icon"></i>
+                <h3>¿Quieres formar parte del equipo?</h3>
+                <p>Buscamos profesionales apasionados por la medicina veterinaria que compartan nuestra filosofía de cuidado compasivo y trabajo en equipo.</p>
+                <a href="mailto:trabaja@vivalnet.es" class="btn btn-primary btn-large">
+                    <i class="ph ph-paper-plane-tilt"></i>
+                    Envíanos tu CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         PIE DE PÁGINA
+         ============================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="img/VitalVet_veterinario_202603211912-Photoroom.png" alt="Vivalnet Clínica Veterinaria Logo">
+                    <span>Vivalnet</span>
+                </a>
+                <p>Clínica veterinaria especializada en el cuidado avanzado y preventivo de perros y gatos.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="ph ph-map-pin"></i> Calle Vivaldi 45, Local 2, Ciudad</li>
+                    <li><i class="ph ph-phone"></i> +34 900 123 456</li>
+                    <li><i class="ph ph-envelope-simple"></i> urgencias@vivalnet.es</li>
+                    <li><i class="ph ph-whatsapp-logo"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+            <div class="footer-links footer-schedule">
+                <h3>Horario de Atención</h3>
+                <ul>
+                    <li><strong>Lunes - Viernes:</strong> 09:00 - 20:30</li>
+                    <li><strong>Sábados:</strong> 10:00 - 14:00</li>
+                    <li><strong class="text-accent">Urgencias:</strong> 24/7 (con llamada previa)</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nuestro-equipo.html">Nuestro Equipo</a></li>
+                    <li><a href="consejos-salud.html">Consejos de Salud</a></li>
+                    <li><a href="index.html#reserva">Reservar Cita</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Vivalnet Veterinaria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script principal del sitio (cursor, scroll, modo oscuro...) -->
+    <script src="script.js"></script>
+</body>
+
+</html>
