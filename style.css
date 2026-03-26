@@ -109,6 +109,8 @@
     /* Texto secundario en oscuro */
     --color-border: #1E293B;
     /* Bordes oscuros */
+    --color-primary-light: rgba(13, 148, 136, 0.15);
+    /* Fondo oscuro para elementos destacados */
     --glass-bg: rgba(15, 23, 42, 0.6);
     /* Vidrio oscuro */
     --glass-border: rgba(255, 255, 255, 0.1);
@@ -159,6 +161,11 @@ body {
     /* Texto más nítido en pantallas Mac */
     cursor: none;
     /* Ocultamos el cursor por defecto (usamos uno personalizado) */
+}
+
+/* Forzamos que NINGÚN elemento muestre el cursor nativo de Windows */
+*, *::before, *::after {
+    cursor: none !important;
 }
 
 /* Imágenes responsivas por defecto */
@@ -246,16 +253,19 @@ h6 {
     }
 }
 
-/* Efecto cuando el cursor pasa sobre un elemento interactivo */
+/* Efecto cuando el cursor pasa sobre un elemento interactivo (Pointer) */
 .cursor-hover .custom-cursor {
-    transform: scale(3);
-    /* El icono crece */
+    transform: scale(1.6);
+    color: var(--color-secondary); /* Cambia a color ámbar para destacar */
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
 }
 
 .cursor-hover .cursor-follower {
-    transform: scale(1.5);
-    background: rgba(13, 148, 136, 0.1);
-    border-color: transparent;
+    transform: scale(0.65); /* Se encoge para ser más preciso */
+    background: rgba(245, 158, 11, 0.1);
+    border-color: var(--color-secondary);
+    border-width: 3px;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
 }
 
 
@@ -939,9 +949,358 @@ h6 {
 
 
 /* =========================================================================
-   12. SECCIÓN DE SERVICIOS (DISEÑO BENTO GRID)
-   Las tarjetas de servicio usan un diseño "Bento" donde algunos elementos
-   ocupan más espacio que otros, creando un layout variado y moderno.
+   12. SECCIÓN DE SERVICIOS (TIMELINE VERTICAL INTERACTIVO)
+   Línea de tiempo que se rellena con scroll, con adornos de animales.
+   ========================================================================= */
+
+/* Contenedor principal del timeline */
+.services-timeline {
+    background: var(--color-bg-base);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Grid antiguo oculto */
+.services-grid {
+    display: none;
+}
+
+/* Contenedor del timeline */
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 4rem auto 0;
+    padding: 3rem 0;
+}
+
+/* Línea base (gris) */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--color-border);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Línea de progreso (color primario) */
+.timeline-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+    border-radius: 2px;
+    transition: height 0.1s ease-out;
+    box-shadow: 0 0 20px rgba(13, 148, 136, 0.4);
+}
+
+/* Items del timeline */
+.timeline-items {
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5rem;
+    position: relative;
+    width: 100%;
+}
+
+/* Alternar lados - Items impares (1, 3, 5) a la IZQUIERDA */
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-right: calc(50% + 60px);
+    padding-left: 0;
+}
+
+/* Alternar lados - Items pares (2, 4, 6) a la DERECHA */
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    padding-left: calc(50% + 60px);
+    padding-right: 0;
+}
+
+/* Marcador circular */
+.timeline-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: var(--color-bg-surface);
+    border: 4px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Marcador activo */
+.timeline-marker.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0.2), var(--shadow-md);
+}
+
+.timeline-marker.active .marker-icon {
+    filter: brightness(0) invert(1);
+    transform: scale(1.2);
+}
+
+/* Icono del marcador */
+.marker-icon {
+    font-size: 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+/* Contenido de cada servicio */
+.timeline-content {
+    background: var(--color-bg-surface);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+    position: relative;
+    width: 100%;
+}
+
+/* Flecha de conexión al centro */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    background: var(--color-bg-surface);
+    border: 2px solid var(--color-border);
+    transform: translateY(-50%) rotate(45deg);
+    z-index: -1;
+    transition: var(--transition-smooth);
+}
+
+/* Flecha para items de la IZQUIERDA (apunta a la derecha) */
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -13px;
+    border-left: none;
+    border-bottom: none;
+}
+
+/* Flecha para items de la DERECHA (apunta a la izquierda) */
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -13px;
+    border-right: none;
+    border-top: none;
+}
+
+/* Al activarse, la flecha toma el color primario */
+.timeline-item.active .timeline-content::before {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+.timeline-content .service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-content p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ========== ADORNOS DE ANIMALES ========== */
+.timeline-animal {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.15;
+    z-index: 0;
+    transition: all 0.5s ease;
+    animation: animalFloat 4s ease-in-out infinite;
+}
+
+.timeline-animal:hover {
+    opacity: 0.4;
+    transform: scale(1.2);
+}
+
+/* Posiciones de los animales */
+.timeline-animal.animal-top {
+    top: -20px;
+    right: 15%;
+    animation-delay: 0s;
+}
+
+.timeline-animal.animal-mid-right {
+    top: 35%;
+    right: 5%;
+    animation-delay: 1s;
+}
+
+.timeline-animal.animal-mid-left {
+    top: 60%;
+    left: 5%;
+    animation-delay: 2s;
+}
+
+.timeline-animal.animal-bottom {
+    bottom: 20px;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+/* Animación de flotación */
+@keyframes animalFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* Animación de brinco */
+@keyframes animalBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    25% {
+        transform: translateY(-20px) scale(1.1);
+    }
+
+    50% {
+        transform: translateY(0) scale(1);
+    }
+
+    75% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+/* Responsive del timeline - Tablet (mantener alternancia) */
+@media (max-width: 900px) {
+    .timeline-container {
+        max-width: 100%;
+        padding: 2rem 1rem;
+    }
+
+    .timeline-item:nth-child(odd) {
+        padding-right: calc(50% + 40px);
+    }
+
+    .timeline-item:nth-child(even) {
+        padding-left: calc(50% + 40px);
+    }
+
+    .timeline-content {
+        padding: 1.75rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .timeline-marker {
+        width: 50px;
+        height: 50px;
+    }
+
+    .marker-icon {
+        font-size: 1.25rem;
+    }
+}
+
+/* Responsive del timeline - Móvil (todos a un lado) */
+@media (max-width: 600px) {
+    .timeline-container {
+        padding: 2rem 0 2rem 1.5rem;
+    }
+
+    .timeline-line {
+        left: 25px;
+    }
+
+    .timeline-item {
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        padding: 0 0 0 55px !important;
+        margin-bottom: 2.5rem;
+    }
+
+    .timeline-marker {
+        left: 25px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .timeline-marker.active {
+        transform: translateX(-50%) scale(1.15);
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+    }
+
+    .timeline-content::before {
+        display: none;
+    }
+
+    .timeline-content .service-icon {
+        font-size: 2rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.15rem;
+    }
+
+    .timeline-animal {
+        display: none;
+    }
+
+    /* Animaciones de entrada simplificadas en móvil */
+    .timeline-item:nth-child(odd).visible,
+    .timeline-item:nth-child(even).visible {
+        animation: slideInLeft 0.6s ease forwards;
+    }
+}
+
+/* =========================================================================
+   12. SECCIÓN DE SERVICIOS - DISEÑO BENTO (LEGACY - OCULTO)
    ========================================================================= */
 
 /* Cuadrícula de 6 columnas */
@@ -1214,13 +1573,84 @@ h6 {
 
 /* =========================================================================
    15. TESTIMONIOS
-   Reseñas de clientes en una cuadrícula de tres columnas.
+   Reseñas de clientes en un carrusel infinito horizontal.
    ========================================================================= */
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+/* Wrapper del carrusel */
+.testimonials-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Efecto de gradiente en los bordes */
+.testimonials-carousel-wrapper::before,
+.testimonials-carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.testimonials-carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-bg-base), transparent);
+}
+
+.testimonials-carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-bg-base), transparent);
+}
+
+/* Carrusel con animación infinita */
+.testimonials-carousel {
+    display: flex;
     gap: 2rem;
-    margin-top: 3rem;
+    width: max-content;
+    animation: scrollTestimonials 50s linear infinite;
+}
+
+/* Animación del carrusel */
+@keyframes scrollTestimonials {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pausar al hacer hover */
+.testimonials-carousel-wrapper:hover .testimonials-carousel {
+    animation-play-state: paused;
+}
+
+/* Tarjeta individual de testimonio en el carrusel */
+.testimonials-carousel .testimonial-card {
+    width: 380px;
+    flex-shrink: 0;
+    background: var(--color-bg-surface);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    border: 1px solid var(--color-border);
+}
+
+.testimonials-carousel .testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+/* Grid antiguo (oculto, por si se necesita referencia) */
+.testimonials-grid {
+    display: none;
 }
 
 /* Tarjeta individual de testimonio */
@@ -1531,6 +1961,91 @@ h6 {
 }
 
 
+/* Estado activo del item del timeline */
+.timeline-item.active .timeline-content {
+    border-color: var(--color-primary);
+    box-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.25);
+}
+
+.timeline-item.active .timeline-content .service-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(13, 148, 136, 0.3));
+}
+
+/* Animación de entrada para items del timeline */
+.timeline-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Items de la izquierda entran desde la izquierda */
+.timeline-item:nth-child(odd).visible {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideInLeft 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Items de la derecha entran desde la derecha */
+.timeline-item:nth-child(even).visible {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideInRight 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Efecto de brillo en la barra de progreso */
+.timeline-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 20px;
+    background: var(--color-accent);
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--color-accent);
+}
+
+/* Responsive para testimonios */
+@media (max-width: 768px) {
+    .testimonials-carousel .testimonial-card {
+        width: 320px;
+        padding: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-carousel .testimonial-card {
+        width: 280px;
+        padding: 1.5rem;
+    }
+}
+
 /* =========================================================================
    19. DISEÑO RESPONSIVO (ADAPTACIÓN A DISTINTOS TAMAÑOS DE PANTALLA)
    Usamos media queries para reorganizar el contenido en pantallas pequeñas.
@@ -1599,7 +2114,7 @@ h6 {
     left: -20%;
     width: 80vw;
     height: 80vw;
-    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
     border-radius: 50%;
     animation: drift 18s ease-in-out infinite alternate;
 }
@@ -1620,7 +2135,7 @@ h6 {
     font-size: 0.875rem;
     border-radius: var(--radius-full);
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .page-hero h1 {
@@ -1789,17 +2304,24 @@ h6 {
     justify-content: center;
     color: var(--color-primary);
     font-size: 1.25rem;
-    transform: translateY(20px); /* Empieza desplazado hacia abajo */
+    transform: translateY(20px);
+    /* Empieza desplazado hacia abajo */
     transition: var(--transition-smooth);
 }
 
 .vet-card:hover .vet-social-btn {
-    transform: translateY(0); /* Sube al hacer hover */
+    transform: translateY(0);
+    /* Sube al hacer hover */
 }
 
 /* Retraso escalonado para cada botón social */
-.vet-social-btn:nth-child(2) { transition-delay: 0.05s; }
-.vet-social-btn:nth-child(3) { transition-delay: 0.10s; }
+.vet-social-btn:nth-child(2) {
+    transition-delay: 0.05s;
+}
+
+.vet-social-btn:nth-child(3) {
+    transition-delay: 0.10s;
+}
 
 .vet-social-btn:hover {
     background: var(--color-primary);
@@ -1894,7 +2416,7 @@ h6 {
     font-weight: 800;
     line-height: 1;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, white, rgba(255,255,255,0.7));
+    background: linear-gradient(135deg, white, rgba(255, 255, 255, 0.7));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1969,7 +2491,7 @@ h6 {
     left: -15%;
     width: 40vw;
     height: 40vw;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
     border-radius: 50%;
 }
 
@@ -1982,9 +2504,9 @@ h6 {
 .hero-search {
     display: flex;
     align-items: center;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--radius-full);
     padding: 0.6rem 0.6rem 0.6rem 1.5rem;
     max-width: 480px;
@@ -2003,7 +2525,7 @@ h6 {
 }
 
 .hero-search input::placeholder {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .hero-search button {
@@ -2024,7 +2546,7 @@ h6 {
 
 .hero-search button:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* --- Barra de filtros por categoría (sticky bajo el navbar) --- */
@@ -2183,7 +2705,8 @@ h6 {
 }
 
 .read-more-link:hover {
-    gap: 0.75rem; /* La flecha se separa del texto */
+    gap: 0.75rem;
+    /* La flecha se separa del texto */
 }
 
 /* --- Cuadrícula de artículos secundarios (2 columnas) --- */
@@ -2199,13 +2722,25 @@ h6 {
     border-radius: var(--radius-md);
     overflow: hidden;
     border: 1px solid var(--color-border);
-    transition: var(--transition-smooth);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.4s ease, 
+                opacity 0.4s ease, 
+                border-color 0.4s ease;
 }
 
 .article-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
     border-color: var(--color-primary-light);
+}
+
+.article-card.filtered-out,
+.article-featured.filtered-out {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    pointer-events: none;
+    position: absolute;
+    visibility: hidden;
 }
 
 /* Imagen de la tarjeta */
@@ -2267,7 +2802,8 @@ h6 {
 /* --- Sidebar (columna lateral derecha) --- */
 .sidebar {
     position: sticky;
-    top: 150px; /* Se queda bajo el navbar y los filtros */
+    top: 190px;
+    /* Se queda bajo el navbar y los filtros */
 }
 
 /* Bloque genérico del sidebar */
@@ -2277,6 +2813,11 @@ h6 {
     border: 1px solid var(--color-border);
     padding: 1.75rem;
     margin-bottom: 1.5rem;
+}
+
+.sidebar-cta {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
 }
 
 .sidebar-widget h3 {
@@ -2302,7 +2843,8 @@ h6 {
 }
 
 .popular-item:hover {
-    transform: translateX(4px); /* Desliza levemente a la derecha */
+    transform: translateX(4px);
+    /* Desliza levemente a la derecha */
 }
 
 /* Miniatura cuadrada del artículo popular */
@@ -2406,7 +2948,7 @@ h6 {
     border: none;
     font-family: var(--font-body);
     font-size: 0.9rem;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     color: var(--color-text-main);
     width: 100%;
 }
@@ -2497,9 +3039,20 @@ h6 {
     margin-bottom: 1rem;
 }
 
-.guide-card.green .guide-icon-badge { background: #10B981; color: white; }
-.guide-card.amber .guide-icon-badge { background: #F59E0B; color: white; }
-.guide-card.blue  .guide-icon-badge { background: #3B82F6; color: white; }
+.guide-card.green .guide-icon-badge {
+    background: #10B981;
+    color: white;
+}
+
+.guide-card.amber .guide-icon-badge {
+    background: #F59E0B;
+    color: white;
+}
+
+.guide-card.blue .guide-icon-badge {
+    background: #3B82F6;
+    color: white;
+}
 
 .guide-card h3 {
     font-size: 1.15rem;
@@ -2528,9 +3081,17 @@ h6 {
     gap: 0.75rem;
 }
 
-.guide-card.green .guide-download-btn { color: #065F46; }
-.guide-card.amber .guide-download-btn { color: #92400E; }
-.guide-card.blue  .guide-download-btn { color: #1E40AF; }
+.guide-card.green .guide-download-btn {
+    color: #065F46;
+}
+
+.guide-card.amber .guide-download-btn {
+    color: #92400E;
+}
+
+.guide-card.blue .guide-download-btn {
+    color: #1E40AF;
+}
 
 /* --- Banner de urgencias al final de la página --- */
 .emergency-cta {
@@ -2618,30 +3179,72 @@ h6 {
    ========================================================================= */
 
 @media (max-width: 1024px) {
+
     /* Equipo */
-    .team-grid        { grid-template-columns: repeat(2, 1fr); }
-    .philosophy-grid  { grid-template-columns: repeat(2, 1fr); }
-    .stats-grid       { grid-template-columns: repeat(2, 1fr); }
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .philosophy-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     /* Consejos */
-    .content-layout   { grid-template-columns: 1fr; }
-    .sidebar          { position: static; }
-    .guides-grid      { grid-template-columns: 1fr; }
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .guides-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-    .team-grid,
-    .philosophy-grid   { grid-template-columns: 1fr; }
-    .articles-grid     { grid-template-columns: 1fr; }
-    .filters-section   { position: static; }
-    .hero-search       { max-width: 100%; }
 
-    .emergency-left    { flex-direction: column; text-align: center; }
-    .emergency-banner  { flex-direction: column; text-align: center; }
-    .emergency-actions { justify-content: center; }
+    .team-grid,
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-section {
+        position: static;
+    }
+
+    .hero-search {
+        max-width: 100%;
+    }
+
+    .emergency-left {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .emergency-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .emergency-actions {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
-    .stats-grid { grid-template-columns: 1fr; }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
 
     .hero-search {
         flex-direction: column;
@@ -2649,11 +3252,575 @@ h6 {
         padding: 1rem;
     }
 
-    .hero-search input { width: 100%; }
+    .hero-search input {
+        width: 100%;
+    }
 }
 
 
+
+/* =========================================================================
+   FAQ ACCORDION — Acordeón Interactivo
+   ========================================================================= */
+
+.faq-accordion {
+    background: var(--color-bg-base);
+    position: relative;
+}
+
+/* Contenedor del acordeón */
+.accordion-container {
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+/* Item individual */
+.accordion-item {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.accordion-item:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Header del acordeón */
+.accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: var(--transition-smooth);
+}
+
+.accordion-header:hover {
+    background: rgba(13, 148, 136, 0.03);
+}
+
+/* Icono del acordeón */
+.accordion-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.accordion-item:hover .accordion-icon {
+    background: var(--color-primary);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Título */
+.accordion-title {
+    flex: 1;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+/* Toggle indicator */
+.accordion-toggle {
+    width: 32px;
+    height: 32px;
+    background: var(--color-bg-base);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.accordion-toggle i {
+    transition: transform 0.3s ease;
+}
+
+/* Estado activo */
+.accordion-item.active {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 20px rgba(13, 148, 136, 0.15);
+}
+
+.accordion-item.active .accordion-icon {
+    background: var(--color-primary);
+    color: white;
+}
+
+.accordion-item.active .accordion-toggle {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.accordion-item.active .accordion-toggle i {
+    transform: rotate(180deg);
+}
+
+/* Contenido del acordeón */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+}
+
+.accordion-body {
+    padding: 0 1.5rem 1.5rem 4.25rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.accordion-body p {
+    margin: 0;
+}
+
+/* Responsive del acordeón */
+@media (max-width: 600px) {
+    .accordion-header {
+        padding: 1.25rem;
+    }
+
+    .accordion-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .accordion-title {
+        font-size: 1rem;
+    }
+
+    .accordion-body {
+        padding: 0 1.25rem 1.25rem 3.75rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* =========================================================================
+   FAQ PORTAL — "El Orbe de Max" (Legacy - Oculto)
+   ========================================================================= */
+
+.faq {
+    display: none;
+}
+
+/* Blob decorativo de fondo */
+.faq::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--color-primary-light) 0%, transparent 65%);
+    filter: blur(60px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.faq::after {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #FEF3C7 0%, transparent 65%);
+    filter: blur(60px);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* --- Wrapper del portal (orbe + panel) --- */
+.faq-portal-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    min-height: 560px;
+}
+
+/* --- Escena de la órbita --- */
+.faq-orbit-scene {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    flex-shrink: 0;
+}
+
+/* === ORBE CENTRAL DEL PERRO === */
+.faq-dog-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    z-index: 5;
+    /* Perspectiva 3D para el gaze effect */
+    transform-style: preserve-3d;
+    transition: transform 0.08s linear;
+    cursor: none;
+}
+
+/* Halo verde brillante que late  */
+.faq-dog-glow {
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--color-primary), var(--color-accent), var(--color-secondary), var(--color-primary));
+    animation: orbGlow 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes orbGlow {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Segundo aro de cristal */
+.faq-dog-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    background: white;
+    z-index: 1;
+}
+
+/* El perro circular */
+.faq-dog-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 2;
+    display: block;
+    /* Efecto de ligero zoom/profundidad */
+    transition: transform 0.3s ease;
+}
+
+.faq-dog-orb:hover .faq-dog-img {
+    transform: scale(1.05);
+}
+
+
+/* Etiqueta inferior del orbe */
+.faq-dog-label {
+    position: absolute;
+    bottom: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    z-index: 10;
+    animation: floatLabel 3s ease-in-out infinite;
+}
+
+.faq-dog-label i {
+    color: var(--color-primary);
+}
+
+@keyframes floatLabel {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-6px);
+    }
+}
+
+/* === HUELLAS EN ÓRBITA === */
+.faq-paw {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-md);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+    /* El JS asigna top/left y el --delay */
+    animation: pawFloat var(--dur, 3s) var(--delay, 0s) ease-in-out infinite;
+    z-index: 8;
+    transform: translate(-50%, -50%);
+}
+
+.faq-paw:hover {
+    transform: translate(-50%, -50%) scale(1.25);
+    box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.2), var(--shadow-md);
+    background: var(--color-primary-light);
+}
+
+.faq-paw.active {
+    background: var(--color-primary);
+    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0.25), var(--shadow-lg);
+    color: white;
+    transform: translate(-50%, -50%) scale(1.3);
+}
+
+@keyframes pawFloat {
+
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -10px;
+    }
+}
+
+/* Número sobre la huella */
+.faq-paw::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.faq-paw:hover::after {
+    opacity: 1;
+}
+
+/* === PARTÍCULAS === */
+.faq-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    overflow: visible;
+}
+
+.faq-particle {
+    position: absolute;
+    font-size: 1rem;
+    pointer-events: none;
+    animation: particleBurst 0.8s ease-out forwards;
+}
+
+@keyframes particleBurst {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* === PANEL DE RESPUESTA (GLASSMORPHISM) === */
+.faq-answer-panel {
+    width: 360px;
+    min-height: 240px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(30px) scale(0.97);
+    transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+}
+
+/* Brillo diagonal interior */
+.faq-answer-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Estado visible */
+.faq-answer-panel.visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Número de pregunta decorativo */
+.faq-answer-number {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    opacity: 0.08;
+    line-height: 1;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    pointer-events: none;
+}
+
+.faq-answer-inner h3 {
+    font-size: 1.15rem;
+    font-family: var(--font-heading);
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.faq-answer-inner p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+
+/* Botón de cerrar */
+.faq-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.faq-close-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* === ESTADO ACTIVO DEL PERRO (late de alegría al hacer clic) === */
+@keyframes dogHappy {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    60% {
+        transform: translate(-50%, -50%) scale(0.96);
+    }
+
+    80% {
+        transform: translate(-50%, -50%) scale(1.04);
+    }
+}
+
+.faq-dog-orb.happy {
+    animation: dogHappy 0.6s ease-out;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .faq-portal-wrapper {
+        flex-direction: column;
+        gap: 6rem;
+    }
+
+    .faq-answer-panel {
+        width: 100%;
+        max-width: 420px;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    .faq-answer-panel.visible {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 560px) {
+    .faq-orbit-scene {
+        width: 340px;
+        height: 340px;
+    }
+
+    .faq-dog-orb {
+        width: 160px;
+        height: 160px;
+    }
+
+    .faq-paw {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+    }
+}
+
+
+
 /* ---- MÓVIL GRANDE / TABLET (hasta 768px de ancho) ---- */
+
 @media (max-width: 768px) {
 
     .hero {
@@ -2701,36 +3868,52 @@ h6 {
         grid-template-columns: 1fr;
     }
 
-    /* Ocultamos el menú de escritorio */
+    /* Ocultamos el menú de escritorio y mostramos hamburguesa */
     .nav-links,
     .nav-actions {
-        display: none;
+        display: none !important;
+        /* Forzamos la ocultación por defecto en móvil */
     }
 
-    /* Mostramos el botón hamburguesa */
     .menu-toggle {
         display: block;
     }
 
-    /* Menú desplegable para móvil (se activa con JS al pulsar hamburguesa) */
+    /* Menú desplegable para móvil */
     .nav-active .nav-links {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background: white;
+        background: var(--color-bg-surface);
         padding: 2rem;
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         text-align: center;
+        gap: 1.5rem;
+        z-index: 1000;
+        border-bottom: 1px solid var(--color-border);
     }
 
     .nav-active .nav-actions {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
+        position: absolute;
+        top: calc(100% + 185px);
+        /* Posicionamos debajo de los links */
+        left: 0;
         width: 100%;
-        margin-top: 20px;
+        background: var(--color-bg-surface);
+        padding: 1rem 2rem 2.5rem;
+        box-shadow: var(--shadow-md);
+        z-index: 1000;
+        gap: 1rem;
+    }
+
+    /* Aseguramos que el logo y el toggle se vean bien arriba */
+    .navbar-content {
+        position: relative;
     }
 
     /* La tarjeta de vidrio del hero se hace más pequeña */
@@ -2771,4 +3954,348 @@ h6 {
     .experience-badge .number {
         font-size: 1.5rem;
     }
+}
+
+/* --- BOTÓN VOLVER ARRIBA (SCROLL TO TOP) --- */
+.btn-scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--color-bg-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: var(--shadow-md), 0 0 20px rgba(0, 0, 0, 0.05);
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.btn-scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.btn-scroll-top:hover {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: var(--glow-primary);
+    transform: translateY(-5px);
+}
+
+.btn-scroll-top:active {
+    transform: scale(0.95);
+}
+
+.btn-scroll-top i {
+    transition: transform 0.3s ease;
+}
+
+.btn-scroll-top:hover i {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================================
+   MODO OSCURO - CORRECCIONES ADICIONALES
+   Estilos específicos para mejorar el contraste en modo oscuro.
+   ========================================================================= */
+
+/* Correcciones generales para modo oscuro */
+[data-theme="dark"] .timeline-content::before {
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .timeline-marker {
+    background: var(--color-bg-surface);
+}
+
+[data-theme="dark"] .accordion-item {
+    background: var(--color-bg-surface);
+}
+
+[data-theme="dark"] .accordion-toggle {
+    background: var(--color-bg-base);
+}
+
+[data-theme="dark"] .accordion-item.active {
+    box-shadow: 0 4px 20px rgba(13, 148, 136, 0.25);
+}
+
+/* Correcciones específicas para página Consejos de Salud */
+[data-theme="dark"] .article-featured {
+    background: var(--color-bg-surface);
+}
+
+[data-theme="dark"] .article-card {
+    background: var(--color-bg-surface);
+}
+
+[data-theme="dark"] .article-card-body {
+    background: transparent;
+}
+
+[data-theme="dark"] .article-card-cat {
+    color: var(--color-primary);
+}
+
+[data-theme="dark"] .sidebar-widget {
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .quick-tip {
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.25), rgba(15, 23, 42, 0.4));
+    border-color: rgba(13, 148, 136, 0.4);
+}
+
+[data-theme="dark"] .quick-tip h3 {
+    color: var(--color-primary);
+    filter: brightness(1.2);
+}
+
+[data-theme="dark"] .quick-tip p {
+    color: var(--color-text-main);
+}
+
+[data-theme="dark"] .newsletter-widget {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+[data-theme="dark"] .newsletter-widget h3,
+[data-theme="dark"] .newsletter-widget p {
+    color: white;
+}
+
+[data-theme="dark"] .newsletter-form input {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="dark"] .popular-item h4 {
+    color: var(--color-text-main);
+}
+
+[data-theme="dark"] .popular-item span {
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .popular-item:hover h4 {
+    color: var(--color-primary);
+}
+
+[data-theme="dark"] .guide-card.green {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(2, 6, 23, 0.6));
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+[data-theme="dark"] .guide-card.amber {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(2, 6, 23, 0.6));
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="dark"] .guide-card.blue {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(2, 6, 23, 0.6));
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="dark"] .guide-card h3 {
+    color: var(--color-text-main);
+}
+
+[data-theme="dark"] .guide-card p {
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .guide-card-icon {
+    opacity: 0.1;
+}
+
+[data-theme="dark"] .guide-card:hover .guide-card-icon {
+    opacity: 0.2;
+}
+
+[data-theme="dark"] .filter-chip {
+    background: var(--color-bg-base);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .filter-chip:hover,
+[data-theme="dark"] .filter-chip.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+[data-theme="dark"] .filters-section {
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .emergency-banner {
+    background: linear-gradient(135deg, #1E293B, #0F172A);
+}
+
+[data-theme="dark"] .emergency-text h3 {
+    color: white;
+}
+
+[data-theme="dark"] .emergency-text p {
+    color: #94A3B8;
+}
+
+[data-theme="dark"] .article-cat-tag {
+    background: var(--color-primary);
+    color: white;
+}
+
+[data-theme="dark"] .read-more-link {
+    color: var(--color-primary);
+}
+
+[data-theme="dark"] .read-more-link:hover {
+    color: var(--color-accent);
+}
+
+/* Correcciones para testimonios en modo oscuro */
+[data-theme="dark"] .testimonials-carousel-wrapper::before {
+    background: linear-gradient(to right, var(--color-bg-base), transparent);
+}
+
+[data-theme="dark"] .testimonials-carousel-wrapper::after {
+    background: linear-gradient(to left, var(--color-bg-base), transparent);
+}
+
+[data-theme="dark"] .testimonials-carousel .testimonial-card {
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+}
+
+/* Correcciones para footer en modo oscuro */
+[data-theme="dark"] .footer-links a:hover {
+    color: var(--color-primary);
+    filter: brightness(1.2);
+}
+
+/* Correcciones para timeline en modo oscuro */
+[data-theme="dark"] .timeline-content:hover {
+    border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .timeline-line {
+    background: var(--color-border);
+}
+
+/* Correcciones para iconos Phosphor en modo oscuro */
+[data-theme="dark"] .ph-fill {
+    opacity: 1;
+}
+
+/* Asegurar contraste en texto de cards */
+[data-theme="dark"] .review {
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .reviewer strong {
+    color: var(--color-text-main);
+}
+
+[data-theme="dark"] .reviewer span {
+    color: var(--color-text-muted);
+}
+
+/* Correcciones para badges y etiquetas */
+
+
+/* Correcciones para bordes en modo oscuro */
+[data-theme="dark"] .trust-card {
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .service-card {
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .testimonial-card {
+    border-color: var(--color-border);
+}
+
+/* Correcciones para glassmorphism en modo oscuro */
+[data-theme="dark"] .image-glass-card {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .image-glass-card::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+/* Correcciones para la página de equipo */
+[data-theme="dark"] .page-hero .badge {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .philosophy-card {
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .vet-card {
+    background: var(--color-bg-surface);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .vet-info h3 {
+    color: var(--color-text-main);
+}
+
+[data-theme="dark"] .vet-role {
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .join-card {
+    background: var(--color-bg-base);
+    border-color: var(--color-border);
+}
+
+[data-theme="dark"] .join-card:hover {
+    border-color: var(--color-primary);
+}
+
+/* Animaciones de entrada suavizadas en modo oscuro */
+[data-theme="dark"] [data-animate] {
+    opacity: 0;
+}
+
+[data-theme="dark"] [data-animate].is-visible {
+    opacity: 1;
+}
+
+/* Corrección para scrollbar en modo oscuro */
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--color-bg-base);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 5px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
 }

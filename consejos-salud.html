@@ -7,6 +7,7 @@
     <title>Consejos de Salud Animal | Vivalnet Clínica Veterinaria</title>
     <meta name="description"
         content="Guías y consejos expertos de los veterinarios de Vivalnet sobre nutrición, vacunas, higiene y bienestar para perros y gatos. Cuida mejor a tu mascota.">
+    <link rel="canonical" href="https://vivalnet.es/consejos-salud.html" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,14 +90,14 @@
         <div class="container">
             <div class="filters-row">
                 <span class="filter-label">Filtrar por:</span>
-                <button class="filter-chip active"><i class="ph ph-grid-four"></i> Todos</button>
-                <button class="filter-chip"><i class="ph-fill ph-dog"></i> Perros</button>
-                <button class="filter-chip"><i class="ph-fill ph-cat"></i> Gatos</button>
-                <button class="filter-chip"><i class="ph ph-fork-knife"></i> Nutrición</button>
-                <button class="filter-chip"><i class="ph ph-syringe"></i> Vacunas</button>
-                <button class="filter-chip"><i class="ph ph-scissors"></i> Higiene</button>
-                <button class="filter-chip"><i class="ph ph-first-aid"></i> Urgencias</button>
-                <button class="filter-chip"><i class="ph ph-moon-stars"></i> Bienestar</button>
+                <button class="filter-chip active" data-filter="todos"><i class="ph ph-grid-four"></i> Todos</button>
+                <button class="filter-chip" data-filter="perros"><i class="ph-fill ph-dog"></i> Perros</button>
+                <button class="filter-chip" data-filter="gatos"><i class="ph-fill ph-cat"></i> Gatos</button>
+                <button class="filter-chip" data-filter="nutricion"><i class="ph ph-fork-knife"></i> Nutrición</button>
+                <button class="filter-chip" data-filter="vacunas"><i class="ph ph-syringe"></i> Vacunas</button>
+                <button class="filter-chip" data-filter="higiene"><i class="ph ph-scissors"></i> Higiene</button>
+                <button class="filter-chip" data-filter="urgencias"><i class="ph ph-first-aid"></i> Urgencias</button>
+                <button class="filter-chip" data-filter="bienestar"><i class="ph ph-moon-stars"></i> Bienestar</button>
             </div>
         </div>
     </div>
@@ -110,7 +111,7 @@
         <main>
 
             <!-- --- Artículo DESTACADO --- -->
-            <article class="article-featured" data-animate="fade-up">
+            <article class="article-featured" data-category="nutricion perros" data-animate="fade-up">
                 <div class="article-featured-img">
                     <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=1200" alt="Perro comiendo una dieta equilibrada y saludable">
                     <span class="article-cat-tag"><i class="ph ph-fork-knife"></i> Nutrición</span>
@@ -133,7 +134,7 @@
             <div class="articles-grid">
 
                 <!-- Artículo 1: Vacunas -->
-                <article class="article-card" data-animate="fade-up">
+                <article class="article-card" data-category="vacunas perros" data-animate="fade-up">
                     <div class="article-card-img">
                         <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=600" alt="Veterinaria vacunando a un cachorro">
                     </div>
@@ -149,7 +150,7 @@
                 </article>
 
                 <!-- Artículo 2: Higiene dental -->
-                <article class="article-card" data-animate="fade-up">
+                <article class="article-card" data-category="higiene gatos" data-animate="fade-up">
                     <div class="article-card-img">
                         <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?auto=format&fit=crop&q=80&w=600" alt="Gato con buena salud dental">
                     </div>
@@ -165,12 +166,12 @@
                 </article>
 
                 <!-- Artículo 3: Calor -->
-                <article class="article-card" data-animate="fade-up">
+                <article class="article-card" data-category="urgencias perros" data-animate="fade-up">
                     <div class="article-card-img">
                         <img src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?auto=format&fit=crop&q=80&w=600" alt="Perro acalorado en verano bebiendo agua">
                     </div>
                     <div class="article-card-body">
-                        <span class="article-card-cat"><i class="ph ph-sun"></i> Urgencias</span>
+                        <span class="article-card-cat"><i class="ph ph-first-aid"></i> Urgencias</span>
                         <h3>Golpe de calor en perros: señales de alerta y primeros auxilios</h3>
                         <p>El golpe de calor puede ser mortal en minutos. Aprende a reconocer los síntomas y cómo actuar antes de llegar a la clínica.</p>
                         <div class="article-card-footer">
@@ -181,7 +182,7 @@
                 </article>
 
                 <!-- Artículo 4: Estrés en gatos -->
-                <article class="article-card" data-animate="fade-up">
+                <article class="article-card" data-category="bienestar gatos" data-animate="fade-up">
                     <div class="article-card-img">
                         <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600" alt="Gato relajado en casa">
                     </div>
@@ -197,14 +198,14 @@
                 </article>
 
                 <!-- Artículo 5: Desparasitación -->
-                <article class="article-card" data-animate="fade-up">
+                <article class="article-card" data-category="vacunas perros gatos" data-animate="fade-up">
                     <div class="article-card-img">
                         <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=600" alt="Perro siendo examinado por parásitos">
                     </div>
                     <div class="article-card-body">
-                        <span class="article-card-cat"><i class="ph ph-syringe"></i> Prevención</span>
-                        <h3>Desparasitación interna y externa: cuándo y cómo hacerla</h3>
-                        <p>Las pulgas, los garrapatas y los parásitos intestinales afectan a millones de mascotas. Conoce la frecuencia de tratamiento ideal según el estilo de vida.</p>
+                        <span class="article-card-cat"><i class="ph ph-syringe"></i> Vacunas</span>
+                        <h3>Desparasitación: cuándo y cómo hacerla frente a pulgas y garrapatas</h3>
+                        <p>Las pulgas y garrapatas afectan a millones de mascotas. Conoce la frecuencia de tratamiento ideal según el estilo de vida y zona geográfica.</p>
                         <div class="article-card-footer">
                             <span><i class="ph ph-clock"></i> 4 min</span>
                             <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
@@ -213,16 +214,178 @@
                 </article>
 
                 <!-- Artículo 6: Envejecimiento mascotas -->
-                <article class="article-card" data-animate="fade-up">
+                <article class="article-card" data-category="bienestar perros gatos" data-animate="fade-up">
                     <div class="article-card-img">
                         <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=600" alt="Perro mayor con su dueño">
                     </div>
                     <div class="article-card-body">
-                        <span class="article-card-cat"><i class="ph ph-heart"></i> Geriátrico</span>
-                        <h3>Cómo cuidar a tu mascota cuando llega a la vejez</h3>
-                        <p>Las mascotas mayores tienen necesidades especiales. Desde la nutrición hasta los chequeos preventivos, te contamos cómo ofrecerle la mejor calidad de vida.</p>
+                        <span class="article-card-cat"><i class="ph ph-moon-stars"></i> Bienestar</span>
+                        <h3>Cómo cuidar a tu mascota cuando llega a la etapa senior</h3>
+                        <p>Las mascotas mayores tienen necesidades especiales. Desde la nutrición hasta los chequeos preventivos, te contamos cómo ofrecerle calidad de vida.</p>
                         <div class="article-card-footer">
                             <span><i class="ph ph-clock"></i> 8 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- NUEVOS ARTÍCULOS (10 MÁS) -->
+
+                <!-- Artículo 7: Presentar gatos -->
+                <article class="article-card" data-category="gatos bienestar" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600" alt="Dos gatos conociéndose">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-cat"></i> Gatos / Bienestar</span>
+                        <h3>Cómo presentar a un nuevo gato en casa sin dramas</h3>
+                        <p>La llegada de un nuevo felino puede ser estresante. Sigue el protocolo de presentación paso a paso para una convivencia en paz.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 7 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 8: Adiestramiento positivo -->
+                <article class="article-card" data-category="perros bienestar" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=600" alt="Entrenando a un cachorro">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-dog"></i> Perros / Bienestar</span>
+                        <h3>Adiestramiento positivo: 5 trucos básicos para cachorros</h3>
+                        <p>Sentarse, quedarse quieto o acudir a la llamada. Enseña a tu perro con refuerzo positivo y fortalece vuestro vínculo desde hoy.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 6 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 9: Limpieza de oídos -->
+                <article class="article-card" data-category="perros higiene" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=600" alt="Limpieza de oídos a perro">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-scissors"></i> Higiene</span>
+                        <h3>Limpieza de oídos en perros: cuándo y cómo hacerlo</h3>
+                        <p>La otitis es una causa común de consulta. Aprende a limpiar los oídos de tu perro de forma segura y evita infecciones recurrentes.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 4 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 10: Frutas y verduras -->
+                <article class="article-card" data-category="perros nutricion" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1591768793355-74d7c80b0e9a?auto=format&fit=crop&q=80&w=600" alt="Perro con comida saludable">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-fork-knife"></i> Nutrición</span>
+                        <h3>Frutas y verduras que tu perro puede comer con seguridad</h3>
+                        <p>No todo el "pique" de la cocina es malo. Descubre qué vegetales son snacks saludables y cuáles son una amenaza para su salud.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 5 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 11: Leishmaniosis -->
+                <article class="article-card" data-category="vacunas perros urgencias" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1527362950755-99bc795a3dfc?auto=format&fit=crop&q=80&w=600" alt="Perro en el campo">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-syringe"></i> Vacunas / Urgencias</span>
+                        <h3>Leishmaniosis: por qué la prevención es vital en nuestra zona</h3>
+                        <p>Transmitida por mosquitos, esta enfermedad puede ser grave. Te contamos cómo proteger a tu perro con vacunas y collares repelentes.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 6 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 12: Plantas tóxicas -->
+                <article class="article-card" data-category="gatos urgencias" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=600" alt="Gato cerca de plantas">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-cat"></i> Gatos / Urgencias</span>
+                        <h3>Plantas tóxicas comunes que debes alejar de tu gato</h3>
+                        <p>Lirios o azaleas. Muchas plantas decorativas son venenosas para los felinos. Revisa tu casa con nuestra lista de seguridad.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 5 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 13: Ansiedad separación -->
+                <article class="article-card" data-category="perros bienestar" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80&w=600" alt="Perro esperando solo">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-dog"></i> Perros / Bienestar</span>
+                        <h3>Ansiedad por separación: cómo ayudar a tu perro a estar solo</h3>
+                        <p>¿Tu perro llora o rompe cosas cuando te vas? Aprende pautas de comportamiento para que el tiempo a solas sea tranquilo.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 8 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 14: Cepillado perfecto -->
+                <article class="article-card" data-category="perros gatos higiene" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=600" alt="Cepillando a mascota">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-scissors"></i> Higiene</span>
+                        <h3>El cepillado perfecto: el peine ideal según el pelo</h3>
+                        <p>Pelo corto, largo o doble capa. Cada manto requiere una herramienta distinta para evitar nudos y mantener la piel sana.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 4 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 15: Obesidad felina -->
+                <article class="article-card" data-category="gatos nutricion" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&q=80&w=600" alt="Gato con sobrepeso">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-cat"></i> Gatos / Nutrición</span>
+                        <h3>Obesidad felina: riesgos y cómo ayudar a perder peso</h3>
+                        <p>El sobrepeso reduce la vida de tu gato. Descubre planes de alimentación y juegos activos para que recupere su peso ideal.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 6 min</span>
+                            <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Artículo 16: Heimlich animal -->
+                <article class="article-card" data-category="perros gatos urgencias" data-animate="fade-up">
+                    <div class="article-card-img">
+                        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=600" alt="Emergencia veterinaria">
+                    </div>
+                    <div class="article-card-body">
+                        <span class="article-card-cat"><i class="ph ph-first-aid"></i> Urgencias</span>
+                        <h3>Qué hacer si tu mascota se atraganta: maniobra de Heimlich</h3>
+                        <p>Saber actuar en segundos marca la diferencia. Aprende a despejar las vías respiratorias ante una obstrucción accidental.</p>
+                        <div class="article-card-footer">
+                            <span><i class="ph ph-clock"></i> 5 min</span>
                             <a href="#" class="read-more-link" style="font-size: 0.85rem;">Leer más <i class="ph ph-arrow-right"></i></a>
                         </div>
                     </div>
@@ -293,7 +456,7 @@
             </div>
 
             <!-- CTA para reservar cita -->
-            <div class="sidebar-widget text-center" data-animate="fade-left" style="background: var(--color-primary-light); border-color: var(--color-primary);">
+            <div class="sidebar-widget sidebar-cta text-center" data-animate="fade-left">
                 <i class="ph-fill ph-calendar-check" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1rem; display: block;"></i>
                 <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">¿Tienes dudas sobre tu mascota?</h3>
                 <p style="color: var(--color-text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;">Reserva una consulta con nuestros expertos.</p>
@@ -421,7 +584,8 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="nuestro-equipo.html">Nuestro Equipo</a></li>
                     <li><a href="consejos-salud.html">Consejos de Salud</a></li>
-                    <li><a href="index.html#reserva">Reservar Cita</a></li>
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
                 </ul>
             </div>
         </div>

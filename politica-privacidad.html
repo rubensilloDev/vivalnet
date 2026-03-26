@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad | Vivalnet Clínica Veterinaria</title>
+    <meta name="description"
+        content="Política de privacidad de Vivalnet Clínica Veterinaria. Cómo recopilamos, usamos y protegemos los datos personales de nuestros pacientes y usuarios.">
+    <link rel="canonical" href="https://vivalnet.es/politica-privacidad.html" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Estilos compartidos del sitio -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           ESTILOS ESPECÍFICOS DE PÁGINAS LEGALES
+           ========================================= */
+
+        .legal-hero {
+            background: linear-gradient(135deg, #1E293B 0%, #0D9488 100%);
+            padding: 10rem 0 5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .legal-hero h1 {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .legal-hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.80);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .legal-hero .badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: var(--radius-full);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .legal-meta-bar {
+            background: var(--color-primary-light);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0.85rem 0;
+        }
+
+        .legal-meta-bar .container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            font-family: var(--font-heading);
+        }
+
+        .legal-meta-bar span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legal-meta-bar i {
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .legal-layout {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 3rem;
+            padding: 4rem 0 6rem;
+            align-items: start;
+        }
+
+        .legal-content {
+            background: var(--color-bg-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .legal-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .legal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .legal-section h2 {
+            font-size: 1.25rem;
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .legal-section h2 i {
+            font-size: 1.3rem;
+        }
+
+        .legal-section h3 {
+            font-size: 1rem;
+            font-family: var(--font-heading);
+            color: var(--color-text-main);
+            margin: 1.25rem 0 0.6rem;
+        }
+
+        .legal-section p {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-list {
+            list-style: none;
+            margin: 0.75rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .legal-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .legal-list li i {
+            color: var(--color-primary);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .legal-note {
+            background: var(--color-primary-light);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .legal-note i {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Tarjetas de derechos del usuario */
+        .rights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .right-card {
+            background: var(--color-bg-base);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .right-card i {
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .right-card strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            margin-bottom: 0.2rem;
+        }
+
+        .right-card span {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* Tabla de tipos de datos */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+
+        .data-table thead tr {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .data-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        .data-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+        .data-table th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+
+        .data-table tbody tr {
+            border-bottom: 1px solid var(--color-border);
+            transition: background 0.2s;
+        }
+
+        .data-table tbody tr:last-child { border-bottom: none; }
+        .data-table tbody tr:hover { background: var(--color-primary-light); }
+
+        .data-table td {
+            padding: 0.75rem 1rem;
+            color: var(--color-text-muted);
+            vertical-align: top;
+        }
+
+        .data-table td:first-child {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--color-text-main);
+        }
+
+        /* Sidebar */
+        .legal-sidebar {
+            position: sticky;
+            top: 110px;
+        }
+
+        .sidebar-index {
+            background: var(--color-bg-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-index h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-index ol {
+            list-style: none;
+            counter-reset: index-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .sidebar-index li {
+            counter-increment: index-counter;
+        }
+
+        .sidebar-index a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            transition: var(--transition-fast);
+            font-family: var(--font-heading);
+            font-weight: 500;
+        }
+
+        .sidebar-index a::before {
+            content: counter(index-counter, decimal-leading-zero);
+            font-size: 0.7rem;
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .sidebar-index a:hover {
+            color: var(--color-primary);
+            background: var(--color-primary-light);
+        }
+
+        .sidebar-contact {
+            background: linear-gradient(135deg, #1E293B, #0D9488);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 1.25rem;
+            text-align: center;
+            color: white;
+        }
+
+        .sidebar-contact i {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .sidebar-contact h4 {
+            color: white;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .sidebar-contact p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-contact a.btn {
+            background: white;
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            padding: 0.6rem 1.25rem;
+            width: 100%;
+        }
+
+        /* RGPD badge */
+        .rgpd-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            border-radius: var(--radius-full);
+            padding: 0.3rem 0.85rem;
+            font-size: 0.78rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .legal-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-sidebar {
+                position: static;
+                order: -1;
+            }
+
+            .legal-hero h1 {
+                font-size: 2rem;
+            }
+
+            .legal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .rights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor"><i class="ph-fill ph-paw-print"></i></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <div class="magnetic-wrap" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <a href="#" class="btn-whatsapp-floating" aria-label="Contactar por WhatsApp" style="position: static;">
+            <i class="ph-fill ph-whatsapp-logo"></i>
+        </a>
+    </div>
+
+    <!-- ======== NAVBAR ======== -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <img src="img/VitalVet_veterinario_202603211912-Photoroom.png" alt="Vivalnet Clínica Veterinaria Logo">
+                <span>Vivalnet</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="nuestro-equipo.html">Nuestro Equipo</a>
+                <a href="consejos-salud.html">Consejos de Salud</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
+                    <i class="ph-fill ph-moon"></i>
+                </button>
+                <div class="magnetic-wrap">
+                    <a href="index.html#reserva" class="btn btn-primary">Reservar Cita</a>
+                </div>
+            </div>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ======== HERO ======== -->
+    <section class="legal-hero">
+        <div class="container">
+            <div class="badge"><i class="ph-fill ph-lock"></i> &nbsp;Protección de datos</div>
+            <h1>Política de Privacidad</h1>
+            <p>En Vivalnet nos tomamos muy en serio la privacidad de tus datos. Aquí te explicamos qué información recopilamos, cómo la usamos y cómo puedes ejercer tus derechos.</p>
+        </div>
+    </section>
+
+    <!-- Barra de metadatos -->
+    <div class="legal-meta-bar">
+        <div class="container">
+            <span><i class="ph ph-calendar-blank"></i> Última actualización: 25 de marzo de 2026</span>
+            <span><i class="ph ph-shield-check"></i> Cumple el RGPD (UE) 2016/679</span>
+            <span><i class="ph ph-flag"></i> Aplicable en: España y UE</span>
+        </div>
+    </div>
+
+    <!-- ======== CONTENIDO PRINCIPAL ======== -->
+    <main>
+        <div class="container legal-layout">
+
+            <!-- ===== BLOQUE DE TEXTO ===== -->
+            <article class="legal-content">
+
+                <!-- Responsable del tratamiento -->
+                <section class="legal-section" id="responsable">
+                    <div class="rgpd-badge"><i class="ph ph-shield-check"></i> RGPD Compliant</div>
+                    <h2><i class="ph-fill ph-building-office"></i> 1. Responsable del tratamiento</h2>
+                    <p>El responsable del tratamiento de sus datos personales es:</p>
+                    <table class="data-table">
+                        <tbody>
+                            <tr><td>Razón social</td><td>Vivalnet Clínica Veterinaria, S.L.</td></tr>
+                            <tr><td>NIF / CIF</td><td>B-XXXXXXXX</td></tr>
+                            <tr><td>Domicilio</td><td>Calle Vivaldi 45, Local 2, Ciudad (España)</td></tr>
+                            <tr><td>Correo electrónico</td><td>privacidad@vivalnet.es</td></tr>
+                            <tr><td>Teléfono</td><td>+34 900 123 456</td></tr>
+                            <tr><td>DPO (Delegado de Protección de Datos)</td><td>dpo@vivalnet.es</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Datos que recopilamos -->
+                <section class="legal-section" id="datos">
+                    <h2><i class="ph-fill ph-database"></i> 2. ¿Qué datos personales recopilamos?</h2>
+                    <p>En Vivalnet recopilamos únicamente los datos estrictamente necesarios para prestar nuestros servicios veterinarios y atender correctamente a nuestros pacientes y sus propietarios. Las categorías de datos que podemos tratar son:</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Categoría de datos</th>
+                                <th>Ejemplos</th>
+                                <th>Finalidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Datos identificativos</td>
+                                <td>Nombre, apellidos, DNI/NIE</td>
+                                <td>Identificación del propietario</td>
+                            </tr>
+                            <tr>
+                                <td>Datos de contacto</td>
+                                <td>Teléfono, correo electrónico, dirección postal</td>
+                                <td>Comunicaciones y recordatorios</td>
+                            </tr>
+                            <tr>
+                                <td>Datos de la mascota</td>
+                                <td>Nombre, especie, raza, edad, historial clínico</td>
+                                <td>Asistencia veterinaria</td>
+                            </tr>
+                            <tr>
+                                <td>Datos de salud (mascota)</td>
+                                <td>Diagnósticos, tratamientos, vacunaciones</td>
+                                <td>Historia clínica veterinaria</td>
+                            </tr>
+                            <tr>
+                                <td>Datos económicos</td>
+                                <td>Facturación, método de pago</td>
+                                <td>Gestión administrativa y contable</td>
+                            </tr>
+                            <tr>
+                                <td>Datos de navegación web</td>
+                                <td>Dirección IP, páginas visitadas, cookies</td>
+                                <td>Mejora del sitio web y análisis de uso</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="legal-note">
+                        <i class="ph-fill ph-info"></i>
+                        <span>No recopilamos datos personales de menores de 14 años sin el consentimiento previo y verificable de sus padres o tutores legales.</span>
+                    </div>
+                </section>
+
+                <!-- Finalidad y base legal -->
+                <section class="legal-section" id="finalidad">
+                    <h2><i class="ph-fill ph-target"></i> 3. Finalidad y base legal del tratamiento</h2>
+                    <p>Tratamos sus datos para las siguientes finalidades y sobre las bases legales que se indican:</p>
+
+                    <h3>3.1 Prestación de servicios veterinarios</h3>
+                    <p><strong>Finalidad:</strong> Gestionar citas, elaborar historiales clínicos, realizar diagnósticos y tratamientos, y enviar recordatorios de revisión o vacunación.</p>
+                    <p><strong>Base legal:</strong> Ejecución de un contrato (art. 6.1.b RGPD) y, en el caso del historial clínico, obligación legal (art. 6.1.c RGPD).</p>
+
+                    <h3>3.2 Comunicaciones comerciales y newsletter</h3>
+                    <p><strong>Finalidad:</strong> Enviarle consejos de salud animal, promociones o novedades de la clínica si nos da su consentimiento expreso.</p>
+                    <p><strong>Base legal:</strong> Consentimiento del interesado (art. 6.1.a RGPD). Puede retirar su consentimiento en cualquier momento.</p>
+
+                    <h3>3.3 Gestión administrativa y contable</h3>
+                    <p><strong>Finalidad:</strong> Emisión de facturas, gestión de pagos y cumplimiento de obligaciones fiscales y mercantiles.</p>
+                    <p><strong>Base legal:</strong> Obligación legal (art. 6.1.c RGPD).</p>
+
+                    <h3>3.4 Análisis y mejora del sitio web</h3>
+                    <p><strong>Finalidad:</strong> Analizar el comportamiento de los usuarios para mejorar la experiencia de navegación.</p>
+                    <p><strong>Base legal:</strong> Interés legítimo (art. 6.1.f RGPD) y consentimiento para las cookies no esenciales.</p>
+                </section>
+
+                <!-- Conservación de datos -->
+                <section class="legal-section" id="conservacion">
+                    <h2><i class="ph-fill ph-clock-countdown"></i> 4. ¿Durante cuánto tiempo conservamos sus datos?</h2>
+                    <p>Conservaremos sus datos personales durante los plazos que se indican a continuación, o hasta que nos solicite su supresión:</p>
+                    <ul class="legal-list">
+                        <li><i class="ph-fill ph-dog"></i> <strong>Historial clínico veterinario:</strong> 5 años desde la última consulta, conforme a la normativa veterinaria vigente.</li>
+                        <li><i class="ph-fill ph-receipt"></i> <strong>Datos de facturación:</strong> 6 años, según la Ley General Tributaria.</li>
+                        <li><i class="ph-fill ph-envelope"></i> <strong>Datos para comunicaciones comerciales:</strong> Hasta que retire su consentimiento.</li>
+                        <li><i class="ph-fill ph-globe"></i> <strong>Datos de navegación web (cookies):</strong> Según el tipo de cookie (véase nuestra política de cookies).</li>
+                    </ul>
+                    <p>Una vez transcurridos los plazos aplicables, sus datos serán suprimidos o anonimizados de forma segura.</p>
+                </section>
+
+                <!-- Destinatarios -->
+                <section class="legal-section" id="destinatarios">
+                    <h2><i class="ph-fill ph-share-network"></i> 5. ¿Con quién compartimos sus datos?</h2>
+                    <p>Vivalnet <strong>no vende ni cede sus datos personales</strong> a terceros con fines comerciales. No obstante, podemos comunicar sus datos a las siguientes categorías de destinatarios cuando sea estrictamente necesario:</p>
+                    <ul class="legal-list">
+                        <li><i class="ph-fill ph-buildings"></i> <strong>Proveedores de servicios:</strong> empresas de software de gestión clínica, servicios de correo electrónico y alojamiento web, que actúan como encargados del tratamiento bajo contrato y con las mismas garantías de protección.</li>
+                        <li><i class="ph-fill ph-scales"></i> <strong>Administraciones públicas:</strong> cuando estemos obligados a ello por ley (p.ej. notificación de enfermedades de declaración obligatoria).</li>
+                        <li><i class="ph-fill ph-first-aid"></i> <strong>Clínicas de referencia o especialistas:</strong> en caso de derivación médica de su mascota, siempre con su conocimiento previo.</li>
+                    </ul>
+                    <p>En todos los casos garantizamos que los terceros destinatarios cumplen con el RGPD y disponen de las medidas de seguridad adecuadas.</p>
+                    <p>En este momento, <strong>no realizamos transferencias internacionales de datos</strong> fuera del Espacio Económico Europeo.</p>
+                </section>
+
+                <!-- Derechos del usuario -->
+                <section class="legal-section" id="derechos">
+                    <h2><i class="ph-fill ph-user-gear"></i> 6. Sus derechos sobre sus datos personales</h2>
+                    <p>El RGPD y la LOPDGDD le otorgan los siguientes derechos respecto a sus datos personales:</p>
+                    <div class="rights-grid">
+                        <div class="right-card">
+                            <i class="ph-fill ph-eye"></i>
+                            <div>
+                                <strong>Acceso</strong>
+                                <span>Conocer qué datos suyos tratamos, con qué finalidad y durante cuánto tiempo.</span>
+                            </div>
+                        </div>
+                        <div class="right-card">
+                            <i class="ph-fill ph-pencil-simple"></i>
+                            <div>
+                                <strong>Rectificación</strong>
+                                <span>Corregir datos inexactos o incompletos que tengamos sobre usted.</span>
+                            </div>
+                        </div>
+                        <div class="right-card">
+                            <i class="ph-fill ph-trash"></i>
+                            <div>
+                                <strong>Supresión («derecho al olvido»)</strong>
+                                <span>Solicitar la eliminación de sus datos cuando ya no sean necesarios.</span>
+                            </div>
+                        </div>
+                        <div class="right-card">
+                            <i class="ph-fill ph-prohibit"></i>
+                            <div>
+                                <strong>Oposición</strong>
+                                <span>Oponerse al tratamiento de sus datos en determinados casos, p.ej. para marketing.</span>
+                            </div>
+                        </div>
+                        <div class="right-card">
+                            <i class="ph-fill ph-pause-circle"></i>
+                            <div>
+                                <strong>Limitación</strong>
+                                <span>Solicitar que suspendamos el tratamiento mientras se resuelve una reclamación.</span>
+                            </div>
+                        </div>
+                        <div class="right-card">
+                            <i class="ph-fill ph-export"></i>
+                            <div>
+                                <strong>Portabilidad</strong>
+                                <span>Recibir sus datos en un formato estructurado y legible por máquina.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1.25rem;">Para ejercer cualquiera de estos derechos, puede ponerse en contacto con nosotros enviando un correo a <a href="mailto:privacidad@vivalnet.es" style="color: var(--color-primary); font-weight: 600;">privacidad@vivalnet.es</a> adjuntando una copia de su DNI u otro documento identificativo.</p>
+                    <div class="legal-note">
+                        <i class="ph-fill ph-info"></i>
+                        <span>Si considera que el tratamiento de sus datos no se ajusta a la normativa, tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> a través de su sitio web: <a href="https://www.aepd.es" target="_blank" rel="noopener" style="color: var(--color-primary);">www.aepd.es</a></span>
+                    </div>
+                </section>
+
+                <!-- Seguridad -->
+                <section class="legal-section" id="seguridad">
+                    <h2><i class="ph-fill ph-lock-key"></i> 7. Seguridad de los datos</h2>
+                    <p>Vivalnet ha implementado las medidas técnicas y organizativas adecuadas para garantizar la seguridad de sus datos personales y prevenir su alteración, pérdida, tratamiento o acceso no autorizado. Entre otras medidas:</p>
+                    <ul class="legal-list">
+                        <li><i class="ph-fill ph-shield-check"></i> Cifrado SSL/TLS en todas las comunicaciones web.</li>
+                        <li><i class="ph-fill ph-shield-check"></i> Control de acceso restringido al personal autorizado con autenticación robusta.</li>
+                        <li><i class="ph-fill ph-shield-check"></i> Copias de seguridad periódicas con protocolo de recuperación ante desastres.</li>
+                        <li><i class="ph-fill ph-shield-check"></i> Formación continua del personal en materia de protección de datos y ciberseguridad.</li>
+                        <li><i class="ph-fill ph-shield-check"></i> Acuerdos de confidencialidad con todos los empleados y colaboradores.</li>
+                    </ul>
+                    <p>A pesar de las medidas adoptadas, ningún sistema de transmisión por internet es completamente seguro. En caso de brecha de seguridad que pueda afectar a sus derechos, le notificaremos en los plazos legalmente establecidos.</p>
+                </section>
+
+                <!-- Cookies -->
+                <section class="legal-section" id="cookies">
+                    <h2><i class="ph-fill ph-cookie"></i> 8. Política de cookies</h2>
+                    <p>Este sitio web utiliza cookies propias y de terceros para mejorar la experiencia de navegación, analizar el tráfico y personalizar el contenido. Las categorías de cookies que utilizamos son:</p>
+                    <ul class="legal-list">
+                        <li><i class="ph-fill ph-gear"></i> <strong>Cookies técnicas o necesarias:</strong> Imprescindibles para el funcionamiento del sitio web. No requieren consentimiento.</li>
+                        <li><i class="ph-fill ph-chart-line"></i> <strong>Cookies analíticas:</strong> Nos permiten conocer el comportamiento de los usuarios de forma agregada y anónima (p.ej. Google Analytics). Requieren su consentimiento.</li>
+                        <li><i class="ph-fill ph-megaphone"></i> <strong>Cookies de marketing:</strong> Utilizadas para personalizar los anuncios que ve en internet. Requieren su consentimiento expreso.</li>
+                    </ul>
+                    <p>Puede gestionar o retirar su consentimiento de cookies en cualquier momento a través del panel de preferencias de cookies del sitio web o configurando su navegador para rechazarlas. Tenga en cuenta que rechazar ciertas cookies puede afectar al funcionamiento de algunas funcionalidades del sitio.</p>
+                </section>
+
+                <!-- Actualizaciones -->
+                <section class="legal-section" id="actualizaciones">
+                    <h2><i class="ph-fill ph-arrows-clockwise"></i> 9. Actualizaciones de esta política</h2>
+                    <p>Vivalnet puede actualizar esta Política de Privacidad periódicamente para reflejar cambios en nuestra práctica de manejo de datos o en la legislación aplicable. La versión vigente siempre estará disponible en esta página con la fecha de última actualización.</p>
+                    <p>Cuando los cambios sean significativos, se lo comunicaremos por correo electrónico o mediante un aviso destacado en el sitio web, para que pueda revisarlos antes de seguir usando nuestros servicios.</p>
+                </section>
+
+                <!-- Contacto -->
+                <section class="legal-section" id="contacto">
+                    <h2><i class="ph-fill ph-envelope"></i> 10. Contacto y Delegado de Protección de Datos</h2>
+                    <p>Para cualquier consulta relacionada con el tratamiento de sus datos personales o para ejercer sus derechos, puede contactar con nuestro <strong>Delegado de Protección de Datos (DPO)</strong>:</p>
+                    <ul class="legal-list">
+                        <li><i class="ph-fill ph-envelope-simple"></i> Correo electrónico: <a href="mailto:dpo@vivalnet.es" style="color: var(--color-primary); font-weight: 600;">dpo@vivalnet.es</a></li>
+                        <li><i class="ph-fill ph-phone"></i> Teléfono: +34 900 123 456</li>
+                        <li><i class="ph-fill ph-map-pin"></i> Dirección postal: Vivalnet Clínica Veterinaria · Att. DPO · Calle Vivaldi 45, Local 2, Ciudad, España</li>
+                    </ul>
+                    <div class="legal-note">
+                        <i class="ph-fill ph-clock"></i>
+                        <span>Nos comprometemos a responder a su solicitud en un plazo máximo de <strong>30 días</strong> desde su recepción, conforme establece el RGPD.</span>
+                    </div>
+                </section>
+
+            </article>
+
+            <!-- ===== SIDEBAR ===== -->
+            <aside class="legal-sidebar">
+                <div class="sidebar-index">
+                    <h3><i class="ph ph-list-numbers"></i> Índice de contenidos</h3>
+                    <ol>
+                        <li><a href="#responsable">Responsable del tratamiento</a></li>
+                        <li><a href="#datos">Datos que recopilamos</a></li>
+                        <li><a href="#finalidad">Finalidad y base legal</a></li>
+                        <li><a href="#conservacion">Conservación</a></li>
+                        <li><a href="#destinatarios">Destinatarios</a></li>
+                        <li><a href="#derechos">Sus derechos</a></li>
+                        <li><a href="#seguridad">Seguridad</a></li>
+                        <li><a href="#cookies">Cookies</a></li>
+                        <li><a href="#actualizaciones">Actualizaciones</a></li>
+                        <li><a href="#contacto">Contacto y DPO</a></li>
+                    </ol>
+                </div>
+                <div class="sidebar-contact">
+                    <i class="ph-fill ph-shield-check"></i>
+                    <h4>¿Dudas sobre tus datos?</h4>
+                    <p>Nuestro Delegado de Protección de Datos te responde en menos de 30 días.</p>
+                    <a href="mailto:dpo@vivalnet.es" class="btn btn-large">Escribir al DPO</a>
+                </div>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <a href="aviso-legal.html" style="font-size: 0.85rem; color: var(--color-primary); font-family: var(--font-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">
+                        <i class="ph ph-files"></i> Ver Aviso Legal
+                    </a>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="img/VitalVet_veterinario_202603211912-Photoroom.png" alt="Vivalnet Clínica Veterinaria Logo">
+                    <span>Vivalnet</span>
+                </a>
+                <p>Clínica veterinaria especializada en el cuidado avanzado y preventivo de perros y gatos. Tu familia de 4 patas, en buenas manos.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="ph ph-map-pin"></i> Calle Vivaldi 45, Local 2, Ciudad</li>
+                    <li><i class="ph ph-phone"></i> +34 900 123 456</li>
+                    <li><i class="ph ph-envelope-simple"></i> urgencias@vivalnet.es</li>
+                    <li><i class="ph ph-whatsapp-logo"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+            <div class="footer-links footer-schedule">
+                <h3>Horario de Atención</h3>
+                <ul>
+                    <li><strong>Lunes - Viernes:</strong> 09:00 - 20:30</li>
+                    <li><strong>Sábados:</strong> 10:00 - 14:00</li>
+                    <li><strong class="text-accent">Urgencias:</strong> 24/7 (con llamada previa)</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Páginas</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nuestro-equipo.html">Nuestro Equipo</a></li>
+                    <li><a href="consejos-salud.html">Consejos de Salud</a></li>
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Vivalnet Veterinaria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

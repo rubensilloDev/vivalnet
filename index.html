@@ -4,9 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivalnet | Clínica Veterinaria Premium para Perros y Gatos</title>
+    <title>Vivalnet | Clínica Veterinaria para Perros y Gatos</title>
     <meta name="description"
-        content="Clínica veterinaria Vivalnet. Atención experta, urgencias y medicina preventiva para tu mascota con el trato cercano que se merece. Reserva tu cita hoy.">
+        content="Clínica veterinaria Vivalnet: atención experta, urgencias y medicina preventiva para tu mascota. Trato cercano y profesional. Reserva tu cita hoy.">
+    <link rel="canonical" href="https://vivalnet.es/" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Vivalnet | Clínica Veterinaria para Perros y Gatos">
+    <meta property="og:description"
+        content="Atención experta para tu mascota. Urgencias 24/7 y medicina preventiva con trato Fear Free.">
+    <meta property="og:image" content="https://vivalnet.es/img/og-image.jpg">
+    <meta property="og:url" content="https://vivalnet.es/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VeterinaryCare",
+      "name": "Vivalnet Clínica Veterinaria",
+      "image": "https://vivalnet.es/img/VitalVet_veterinario_202603211912-Photoroom.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Vivaldi 45, Local 2",
+        "addressLocality": "Ciudad",
+        "postalCode": "XXXXX",
+        "addressCountry": "ES"
+      },
+      "telephone": "+34 900 123 456",
+      "email": "urgencias@vivalnet.es",
+      "openingHours": ["Mo-Fr 09:00-20:30", "Sa 10:00-14:00"],
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "127"
+      }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,11 +66,16 @@
 
 
     <!-- Floating WhatsApp Button -->
-    <div class="magnetic-wrap" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+    <div class="magnetic-wrap" style="position: fixed; bottom: 100px; right: 30px; z-index: 1000;">
         <a href="#" class="btn-whatsapp-floating" aria-label="Contactar por WhatsApp" style="position: static;">
             <i class="ph-fill ph-whatsapp-logo"></i>
         </a>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="btn-scroll-top" aria-label="Volver arriba">
+        <i class="ph-bold ph-caret-up"></i>
+    </button>
 
     <!-- Navbar -->
     <header class="navbar" id="navbar">
@@ -74,9 +115,10 @@
         <div class="container hero-container">
             <div class="hero-content" data-animate="fade-up">
                 <div class="badge">Atención veterinaria de élite</div>
-                <h1>Tranquilidad para ti.<br><span class="text-gradient">Salud de primera</span> para ellos.</h1>
-                <p>Cuidamos de tu perro o gato con medicina avanzada, instalaciones modernas y el cariño que se merecen.
-                    Nunca fue tan fácil y seguro ir al veterinario.</p>
+                <h1><span class="text-gradient">Clínica Veterinaria</span> Vivalnet.<br>Atención Premium para Perros y
+                    Gatos.</h1>
+                <p>Cuidamos de tu perro o gato con medicina avanzada, instalaciones modernas y el cariño que se merecen
+                    (Fear Free). Especialistas en medicina preventiva y urgencias.</p>
                 <div class="hero-buttons">
                     <div class="magnetic-wrap">
                         <a href="#reserva" class="btn btn-primary btn-large">
@@ -165,8 +207,8 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services section-padding" id="servicios">
+    <!-- Services Section - Timeline Interactivo -->
+    <section class="services-timeline section-padding" id="servicios">
         <div class="container">
             <div class="section-header text-center" data-animate="fade-up">
                 <h2>Servicios médicos completos</h2>
@@ -174,42 +216,92 @@
                     quirúrgicas complejas.</p>
             </div>
 
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card" data-animate="fade-up">
-                    <i class="ph ph-heartbeat service-icon"></i>
-                    <h3>Consulta General</h3>
-                    <p>Revisiones completas para asegurar que tu compañero está en su peso y estado óptimo.</p>
+            <!-- Timeline Container -->
+            <div class="timeline-container" data-animate="fade-up">
+                <!-- Línea de progreso -->
+                <div class="timeline-line">
+                    <div class="timeline-progress"></div>
                 </div>
-                <!-- Service 2 -->
-                <div class="service-card" data-animate="fade-up">
-                    <i class="ph ph-shield-check service-icon"></i>
-                    <h3>Medicina Preventiva</h3>
-                    <p>Anticiparse es la mejor cura. Planes de salud diseñados para cada etapa de su vida.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="service-card" data-animate="fade-up">
-                    <i class="ph ph-syringe service-icon"></i>
-                    <h3>Vacunación y Desparasitación</h3>
-                    <p>Protege a tu mascota de enfermedades graves con un calendario de prevención estricto.</p>
-                </div>
-                <!-- Service 4 -->
-                <div class="service-card" data-animate="fade-up">
-                    <i class="ph ph-first-aid service-icon"></i>
-                    <h3>Urgencias</h3>
-                    <p>Atención prioritaria y rápida cuando cada segundo cuenta para la vida de tu mascota.</p>
-                </div>
-                <!-- Service 5 -->
-                <div class="service-card" data-animate="fade-up">
-                    <i class="ph ph-bandaids service-icon"></i>
-                    <h3>Cirugía Segura</h3>
-                    <p>Quirófano equipado con monitorización avanzada para maximizar la seguridad.</p>
-                </div>
-                <!-- Service 6 -->
-                <div class="service-card" data-animate="fade-up">
-                    <i class="ph ph-microscope service-icon"></i>
-                    <h3>Laboratorio y Analíticas</h3>
-                    <p>Resultados rápidos en la propia clínica para diagnósticos precisos sin esperas.</p>
+
+                <!-- Timeline Items -->
+                <div class="timeline-items">
+                    <!-- Service 1 - Izquierda -->
+                    <div class="timeline-item" data-index="0">
+                        <div class="timeline-marker">
+                            <span class="marker-icon">🩺</span>
+                        </div>
+                        <div class="timeline-content">
+                            <i class="ph ph-heartbeat service-icon"></i>
+                            <h3>Consulta General</h3>
+                            <p>Revisiones completas para asegurar que tu compañero está en su peso y estado óptimo.
+                                Incluye revisión de piel, dientes, ojos y oídos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 - Derecha -->
+                    <div class="timeline-item" data-index="1">
+                        <div class="timeline-marker">
+                            <span class="marker-icon">🛡️</span>
+                        </div>
+                        <div class="timeline-content">
+                            <i class="ph ph-shield-check service-icon"></i>
+                            <h3>Medicina Preventiva</h3>
+                            <p>Anticiparse es la mejor cura. Planes de salud diseñados para cada etapa de su vida,
+                                desde cachorros hasta mascotas senior.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 - Izquierda -->
+                    <div class="timeline-item" data-index="2">
+                        <div class="timeline-marker">
+                            <span class="marker-icon">💉</span>
+                        </div>
+                        <div class="timeline-content">
+                            <i class="ph ph-syringe service-icon"></i>
+                            <h3>Vacunación y Desparasitación</h3>
+                            <p>Protege a tu mascota de enfermedades graves con un calendario de prevención
+                                estricto. Usamos vacunas de última generación.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 4 - Derecha -->
+                    <div class="timeline-item" data-index="3">
+                        <div class="timeline-marker">
+                            <span class="marker-icon">🚑</span>
+                        </div>
+                        <div class="timeline-content">
+                            <i class="ph ph-first-aid service-icon"></i>
+                            <h3>Urgencias</h3>
+                            <p>Atención prioritaria y rápida cuando cada segundo cuenta. Servicio 24/7 con equipo
+                                de guardia especializado.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 5 - Izquierda -->
+                    <div class="timeline-item" data-index="4">
+                        <div class="timeline-marker">
+                            <span class="marker-icon">✂️</span>
+                        </div>
+                        <div class="timeline-content">
+                            <i class="ph ph-bandaids service-icon"></i>
+                            <h3>Cirugía Segura</h3>
+                            <p>Quirófano equipado con monitorización avanzada, anestesia inhalatoria y protocolos
+                                de esterilización hospitalaria.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 6 - Derecha -->
+                    <div class="timeline-item" data-index="5">
+                        <div class="timeline-marker">
+                            <span class="marker-icon">🔬</span>
+                        </div>
+                        <div class="timeline-content">
+                            <i class="ph ph-microscope service-icon"></i>
+                            <h3>Laboratorio y Analíticas</h3>
+                            <p>Resultados rápidos en la propia clínica. Hematología completa, bioquímica,
+                                citologías y diagnóstico por imagen.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -271,16 +363,19 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - Carrusel Infinito -->
     <section class="testimonials section-padding" id="testimonios">
         <div class="container">
             <div class="section-header text-center" data-animate="fade-up">
                 <h2>Lo que opinan nuestros pacientes de 4 patas (y sus dueños)</h2>
             </div>
+        </div>
 
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card" data-animate="fade-up">
+        <!-- Carrusel infinito de testimonios -->
+        <div class="testimonials-carousel-wrapper" data-animate="fade-up">
+            <div class="testimonials-carousel">
+                <!-- Set 1: Testimonios originales -->
+                <div class="testimonial-card">
                     <div class="stars">
                         <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
                             class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
@@ -297,8 +392,7 @@
                     </div>
                 </div>
 
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card" data-animate="fade-up" data-delay="100">
+                <div class="testimonial-card">
                     <div class="stars">
                         <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
                             class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
@@ -315,8 +409,7 @@
                     </div>
                 </div>
 
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card" data-animate="fade-up" data-delay="200">
+                <div class="testimonial-card">
                     <div class="stars">
                         <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
                             class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
@@ -332,11 +425,386 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Testimonial 4 - NUEVO -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Mi conejo necesitaba una operación urgente y el equipo de Vivalnet fue
+                        excepcional. La recuperación fue rápida y siempre estuvieron disponibles para mis consultas."
+                    </p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
+                            alt="Roberto Sánchez">
+                        <div>
+                            <strong>Roberto Sánchez</strong>
+                            <span>Dueño de Nube (Conejo Enano)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 - NUEVO -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"El plan de salud para mi perra senior ha sido un acierto. Los controles
+                        periódicos y el trato delicado han mejorado mucho su calidad de vida. Gracias por todo."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1554151228-14d6e2c0d8c0?auto=format&fit=crop&q=80&w=150"
+                            alt="Ana María López">
+                        <div>
+                            <strong>Ana María López</strong>
+                            <span>Dueña de Betty (Caniche)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 - NUEVO -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Profesionales de verdad. Mi gato es muy nervioso y aquí le han ganado la
+                        confianza. El ambiente Fear Free se nota, no hay estrés ni llantos. ¡Mil gracias!"</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
+                            alt="David Fernández">
+                        <div>
+                            <strong>David Fernández</strong>
+                            <span>Dueño de Simba (Gato Maine Coon)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 7 - NUEVO -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Excelente atención veterinaria. El seguimiento post-operatorio de mi hurón fue
+                        impecable. El equipo realmente se preocupa por cada animal como si fuera suyo."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+                            alt="Lucía Martín">
+                        <div>
+                            <strong>Lucía Martín</strong>
+                            <span>Dueña de Rocky (Hurón)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 8 - NUEVO -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Llevo a mis dos perros aquí desde cachorros. El servicio de peluquería canina
+                        combinado con la revisión veterinaria es genial. ¡Siempre salen felices y guapos!"</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150"
+                            alt="Carmen Ruiz">
+                        <div>
+                            <strong>Carmen Ruiz</strong>
+                            <span>Dueña de Toby y Coco (Bichón y Shih Tzu)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Set 2: Duplicados para bucle infinito -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Increíble el trato. Mi perro Max siempre tenía terror de ir al veterinario, pero
+                        aquí entra moviendo la cola. La doctora Ana tiene una empatía brutal. 100% recomendados."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+                            alt="Carlos Gómez">
+                        <div>
+                            <strong>Carlos Gómez</strong>
+                            <span>Dueño de Max (Golden Retriever)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Llevé a mi gata por una urgencia y actuaron rapidísimo. Te explican todo con
+                        claridad y transparencia en los precios. Las instalaciones son súper limpias y modernas."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+                            alt="Marta R.">
+                        <div>
+                            <strong>Marta R.</strong>
+                            <span>Dueña de Luna (Gata Persa)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Son nuestra clínica de confianza desde hace 5 años. Ya sea para vacunas o dudas,
+                        siempre nos atienden con una sonrisa. Además, gestionar la cita por móvil es comodísimo."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150"
+                            alt="Elena y Diego">
+                        <div>
+                            <strong>Elena y Diego</strong>
+                            <span>Dueños de Thor (Bulldog)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Mi conejo necesitaba una operación urgente y el equipo de Vivalnet fue
+                        excepcional. La recuperación fue rápida y siempre estuvieron disponibles para mis consultas."
+                    </p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
+                            alt="Roberto Sánchez">
+                        <div>
+                            <strong>Roberto Sánchez</strong>
+                            <span>Dueño de Nube (Conejo Enano)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"El plan de salud para mi perra senior ha sido un acierto. Los controles
+                        periódicos y el trato delicado han mejorado mucho su calidad de vida. Gracias por todo."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1554151228-14d6e2c0d8c0?auto=format&fit=crop&q=80&w=150"
+                            alt="Ana María López">
+                        <div>
+                            <strong>Ana María López</strong>
+                            <span>Dueña de Betty (Caniche)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Profesionales de verdad. Mi gato es muy nervioso y aquí le han ganado la
+                        confianza. El ambiente Fear Free se nota, no hay estrés ni llantos. ¡Mil gracias!"</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
+                            alt="David Fernández">
+                        <div>
+                            <strong>David Fernández</strong>
+                            <span>Dueño de Simba (Gato Maine Coon)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Excelente atención veterinaria. El seguimiento post-operatorio de mi hurón fue
+                        impecable. El equipo realmente se preocupa por cada animal como si fuera suyo."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+                            alt="Lucía Martín">
+                        <div>
+                            <strong>Lucía Martín</strong>
+                            <span>Dueña de Rocky (Hurón)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="review">"Llevo a mis dos perros aquí desde cachorros. El servicio de peluquería canina
+                        combinado con la revisión veterinaria es genial. ¡Siempre salen felices y guapos!"</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150"
+                            alt="Carmen Ruiz">
+                        <div>
+                            <strong>Carmen Ruiz</strong>
+                            <span>Dueña de Toby y Coco (Bichón y Shih Tzu)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- FAQ Section - Acordeón Interactivo -->
+    <section class="faq-accordion section-padding" id="faq">
+        <div class="container">
+            <div class="section-header text-center" data-animate="fade-up">
+                <div class="badge"><i class="ph-fill ph-question"></i> Resolvemos tus dudas</div>
+                <h2>Preguntas Frecuentes</h2>
+                <p style="color: var(--color-text-muted); max-width: 600px; margin: 0 auto;">Encuentra respuestas a las
+                    preguntas más comunes sobre nuestros servicios veterinarios.</p>
+            </div>
+
+            <div class="accordion-container" data-animate="fade-up" data-delay="100">
+                <!-- Pregunta 1 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-calendar-check"></i></span>
+                        <span class="accordion-title">¿Necesito pedir cita previa?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Sí, recomendamos pedir cita previa para garantizar una atención sin esperas y dedicarle a
+                                tu mascota todo el tiempo que merece. Puedes hacerlo online a través de nuestra web, por
+                                teléfono o WhatsApp. Para urgencias, atendemos directamente sin necesidad de cita
+                                previa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-clock"></i></span>
+                        <span class="accordion-title">¿Tenéis urgencias 24 horas?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Sí, disponemos de un servicio de urgencias 24 horas, 7 días a la semana. Fuera del
+                                horario comercial, atendemos mediante llamada previa para que el equipo esté preparado a
+                                vuestra llegada. El teléfono de urgencias es el 900 123 456.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-syringe"></i></span>
+                        <span class="accordion-title">¿Qué vacunas son obligatorias?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>La vacuna de la rabia es obligatoria por ley. Sin embargo, recomendamos la polivalente y
+                                otras específicas según el estilo de vida de tu mascota para una protección completa.
+                                Nuestros veterinarios te asesorarán sobre el calendario de vacunación más adecuado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-scissors"></i></span>
+                        <span class="accordion-title">¿A qué edad esterilizar a mi mascota?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Generalmente entre los 6 y 12 meses, aunque depende de la raza y el peso. Nuestros
+                                veterinarios evaluarán a tu mascota individualmente para determinar el momento óptimo.
+                                La esterilización temprana tiene múltiples beneficios de salud.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-house-line"></i></span>
+                        <span class="accordion-title">¿Hacéis visitas a domicilio?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Sí, realizamos visitas para vacunaciones y consultas generales cuando el desplazamiento
+                                supone un estrés elevado para la mascota, especialmente útil para gatos o animales
+                                asustadizos. Consulta disponibilidad y tarifas específicas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-credit-card"></i></span>
+                        <span class="accordion-title">¿Qué métodos de pago aceptáis?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Aceptamos efectivo, tarjetas de crédito/débito y Bizum. Para tratamientos o cirugías de
+                                mayor coste, también ofrecemos opciones de financiación personalizada. Pregunta en
+                                recepción por nuestras opciones de pago fraccionado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-paw-print"></i></span>
+                        <span class="accordion-title">¿Cómo preparo a mi mascota para la visita?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Recomendamos traerlos con algo de hambre para poder usar premios, usar transportines
+                                cómodos para los gatos y mantener la calma. Somos clínica Fear Free: el manejo amable es
+                                nuestra prioridad. Evita alimentar a tu mascota 2-3 horas antes de la consulta si
+                                requiere análisis de sangre.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="accordion-icon"><i class="ph ph-heartbeat"></i></span>
+                        <span class="accordion-title">¿Ofrecéis planes de salud anuales?</span>
+                        <span class="accordion-toggle"><i class="ph ph-caret-down"></i></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Sí, contamos con planes preventivos anuales que incluyen vacunas, desparasitaciones y
+                                descuentos en consultas y servicios, adaptados a cachorros, adultos y mascotas senior.
+                                Ahorra hasta un 30% en los cuidados básicos de tu mascota.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Final CTA Section -->
+
     <section class="final-cta section-padding" id="reserva">
         <div class="container final-cta-container" data-animate="fade-up">
             <div class="cta-content">
@@ -408,8 +876,8 @@
                 <ul>
                     <li><a href="nuestro-equipo.html">Nuestro Equipo</a></li>
                     <li><a href="consejos-salud.html">Consejos de Salud</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
                 </ul>
             </div>
         </div>
@@ -420,5 +888,6 @@
 
     <script src="script.js"></script>
 </body>
+
 
 </html>
